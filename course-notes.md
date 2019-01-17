@@ -280,9 +280,174 @@ As I have not yet paid for the "Verified Track" ($99USD) I can't actually take t
 
 ## Getting Started with Text Processing
 
+### Introduction to Text Analytics
+
+blah
+
+### Word Frequency
+
+Pareto Chart
+
+Short words like a, as, an are called "stop words" so they are removed from word frequency count
+
+Loads Moon.txt into jupyter
+
+He normalizes the text to get rid of numbers, punctuation, etc (but not stop words?)
+
+introduces `nltk` library
+
+`FreqDist()` function
+
+Convert to a `DataFrame` and print it
+
+Pareto cart - column chart with more frequent to the left
+
+displays top 60 words. first couple of words are 'the' 'and' 'to' etc
+
+nltk has a standard set of stop words so he'll use it to filter them out.
+
+re-does the Pareto and now top words are 'new', 'space', 'science', 'go', 'moon' so it's a better indicator of the topic
+
+### Term Frequency - Inverse Document Frequency
+
+Term Frequency - the relative frequency of a term within a document i.e., (term instances / total terms).
+
+Inverse Document Frequency - relative number of documents within which the term appears. calculated as the log of total documents divided by the number of documents containing them, i.e., log(docs/docs with term)
+
+Multiply TF by IDF to work out the overall importance of each term to the documents they appear
+
+Now he loads Gettysburg address and some microsoft cognitive services documentation as a 2nd and third document and he wants to calculate the top 3 words in the 3 documents he's loaded.
+
+Talks about a lib called `textblob` that makes working with text easier apparently.
+
+### Stemming
+
+*Stemming* is a technique used to identify words with a common root (e.g., sweet, sweetness, sweeting) and count them as the same.
+
+Common technique is *Porter algorithm* which defines a sequence of rules for breaking words down into a common stem based on the pattern of consonants, vowels, common letter combinations and word endings and other syntactical elements.
+
+Loads kennedy's inaugural address into jupyter, normalizes, gets rid of stop words, gets freq distribution, plotted as pareto, blah blah.
+
+`nltk` has a a `PorterStemmer`. he'll use that then get the frequency of the stems instead because the pareto chart shows a whole bunch of words that don't quite identify anything about the speech including `let` `us`` world` etc.
+
+now *power* and *nation* are showing up more because of words like powerful, nations, national, etc.
+
+### Sentiment Analysis
+
+Analyze text to discern whether the writer is happy, unhappy, or neutral about something.
+
+He loads 160,000 tweets, labeled 4=positive, 0=negative.
+
+He's going to train a machine learning model, has a compiled list of stopwords and a python script which is similar to previous videos but loads the custom stopwords. goes through everything, uses the PorterStemmer, etc etc. Transforms 4 to 1 and 0 to -1 to normalize the labels.
+
+Then he uses a FeatureHashing which does 2 n-gram hashing to indicate whether certain phrases are used (need to learn more about this). then he only uses the numeric output of that (text isn't needed anymore) and trains a Classification Model with 70% of the data and publishes the output as a predictor web service (to predict the sentiment of a new tweet based on the training data)
+
+Loads it into excel and it's predicting sentiment as positive or negative pretty well (kind of cool!!)
+
 ## Introduction to Natural Language Processing (NLP)
 
+### Text Analytics
+
+moving from sentiment analysis we can use text analytics API to extract semantic meaning and sentiment from the text
+
+text analytics API is considered to be a Cognitive service.
+
+showing how to provision it from azure instead of cognitive services website (AI+ Cognitive Services category) in Azure "Text Analytics Service (preview)"
+
+set name, sub, location, pricing tier (free tier) use euxisting resource group, confirm stuff click Create
+
+There are Access Keys in the text API service / resource that you will need to authenticate to it from another app. the Keys you need to bring into your jupyter notebook in order to make use of the textAnalytics service (URI, textKey are what they're called here)
+
+request header has to include the textKey (why don't they just call this api key?) URI is the one to your specific instance of the text service
+
+request body is the documents he wanst to parse (gettysburg and the MS document from previous lecture)
+
+calling the `keyPhrases` method of the ApI so text/analytics/v2.0 API
+
+get back a JSON document with a collection of documents which will have a document ID and then a list of the key phrases found in the document.
+
+For the first one he gets things like 'new nation', 'great civil war', 'great battlefield', etc so it's informational.
+
+For the second he gets 'speech developers', 'microsoft cognitive services', 'vision recognition', 'set of APIs', etc
+
+Next example will be sentiment analysis.
+
+So he calls the `sentiment` method this time. The score is normalized 0-1 so you can set a threshold yourself like 0.5 and below is negative, above is positive.
+
+Document 1 comes back as positive (gettysburg address) and Document 2 comes back as negative (the documentation, lol)
+
+### Speech Service
+
+To work with Speech there are two models that need to work together
+
+1. An acoustic model that maps audio to sound units or phonemes, which define how specific word fragments are pronounced in a given language
+2. Then there's a language model that provides a probability distribution across a sequence of words
+
+Shows  a seque;nce of phonemes which could easily be misinterpreted as "This cherries ferry come for table" but it's actually "This chair is very comfortable"
+
+Back to Azure portal to make a Speech Service resource.
+
+You need the region and access key (why no special URI this time?)
+
+He's going to use Python and its REST interface
+
+Loads a wav file to do speech-to-text first example
+
+"The rain in Spain stays mainly in the plain" is the sound
+
+To use this service you have to get an Access Token that is valid for 10 minutes. (in addition to the key and region from beforeA)
+
+set up headers with the access token, content type (audio/wav), codec, sample rate, etc)
+
+paramaters have language English US.
+
+you get a json document back with text trasncribed from the audio sent up.
+
+In this case the response came back as expected
+
+Now he wants to see text-to-speech.
+
+You have to pass up an XML document this time to the TTS service that explains everything you want like language, voice type (English US Female) and some text.
+
+He runs it and it asks him to enter text "Peter Piper picked a peck of pickled peppers" and it's returned as speech correctly.
+
+### Translation
+
+Microsoft Translator API. Two different services, one for text, one for speech.
+
+Demos text cuz it's easier.
+
+Still need to initially get an access token for ten minutes expiry then a second call to do the actual translation.
+
+you have to set the source language and the destination language.
+
+He sends up some text in EN  and gets it back as FR for French.
+
+### Real World AI - Skype Translator in the Classroom
+
+Skype Propaganda showing two kids speaking to each other with delayed translations in their native language benig provided by skype. so cute yaaay (yes it's cool too)
+
 ## Language Understanding Intelligent Service
+
+### What is LUIS
+
+
+
+### Creating a LUIS app
+
+
+
+### Consuming a LUIS app
+
+
+
+### Improving a LUIS app
+
+
+
+### Real World AI - Starship Commander
+
+
 
 ## Lab
 
