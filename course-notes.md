@@ -431,25 +431,65 @@ Skype Propaganda showing two kids speaking to each other with delayed translatio
 
 ### What is LUIS
 
+It's a service for responding to human communications.
 
+Yaou interact with it through `utterances`, or fragments of language that need to be interpreted and from these utterances, LUIS identifies the most likely `intent/goal/action`. You could map some speech to "Book Flight" as an intent, for example.
 
 ### Creating a LUIS app
 
+He provisions an app called "Home Automation" in "English" with a description hits done and creates it.
 
+He creates some Intents from the intent tab. He creates a "Light On" intent.
+
+He has a loaded "utterance" that says "switch the light off". (it's just text)
+
+He highlight the word "Light" and can call it an entity. He creates a new Entity called "Light", type Simple.
+
+Creates a "Light Off" intent, enters the utterance (says off isntead of on at the end) and highlights "Light" to use the existing Light Entity.
+
+Now he's going to Train the app. Opens a test window and types an utterance to see which Intent comes out (Light On comes back). He also tries "Turn the light on" and it comes back with Light On Intent again even though the utterance is a bit different.
+
+Now he tries to publish it to production, basically just a bunch of boring Azure stuff
 
 ### Consuming a LUIS app
 
+Consumes it from jupyter again. has some code that takes in a text command, then calls the service via URI and tokens and whatnot, and then gets back the intent in the json document.
 
+Then he'll display a particular image depending on if the intent is Light On, Light Off, or neither.
 
 ### Improving a LUIS app
 
+Active Learning - how you can get your service to improve over time (learn new utterances, interpret them correctly)
 
+he tries "turn out the light" and the app can't identify the right intent
+
+He goes back tot he build tab of his luis app. which shows endpoint utterances. He clicks the result it got and re-links it to the Light Off intent, and then he clicks Train to retrain it, tests it with the test button and tries "put out the light" which goes to "Light Off" with 55% confidence instead of nothing.
+
+he then re-publishes to production and tries again from Python and he gets the Light Off picture. Neat.
 
 ### Real World AI - Starship Commander
 
-
+More propaganda. Could be a neat game.
 
 ## Lab
+
+This time the lab is in a jupyter notebook instead of the PDF. Sweet.
+
+I should learn about `pandas`, `nltk` libraries separately.
+
+Man sometimes their jupyter instance is a POS. Run cell fails to do anything a lot, no progress to see.
+
+I am skipping everyhting until it says `Using the Text Analytics Cognitive Service` because this lab isn't a lab until then it's just "Press run cell and observe" so far.
+
+In "Create Bing Speech Service" it says to create a 'Bing Speech' resource but it looks like it's been renamed 'Speech' in the Azure portal since the lab was made.
+
+Well, of course this means later you install "SpeechRecognition" package which apparently supports the Bing Speech API but since that's changed to Speech service now the credentials won't validate when trying to transcribe audio
+
+See https://github.com/Uberi/speech_recognition/issues/385
+
+Looks like the [PR for it](https://github.com/Uberi/speech_recognition/pull/389/files) hasn't been merged yet, so i'm just going to move on. it was demo'd in the video just fine anyway.
+
+AHh shit, this affects the last example in the Lab as well when you combined Speech and LUIS. It's basically just the LUIS example being fed results from the speech transcription so no biggie.
 
 # Computer Vision
 
