@@ -495,6 +495,54 @@ AHh shit, this affects the last example in the Lab as well when you combined Spe
 
 ## Getting Started with Image Processing
 
+### Image Processing Basics
+
+talks about PIL and matplotlib.pyplot
+
+opens an images as a numpy array
+
+I would hardly call this "Image Processing Basics"
+
+### Equalization
+
+talks about cumulative distribution functions (CDF)
+
+For image processing you usually want an equalized image so there isn't too much crazy contrast differences.
+
+Diagonal line going up towards the right is equalized perfectly.
+
+he does a histogram of his profile shot showing an uneven distribution of grayscale values
+
+then he does a CDF of it and gets a not quite diagonal rise in slope, it's a hill
+
+he re-runs the image through an hist_eq function, and gets a histogram that's less spiky and is more equal in values, and his CDF is more or less a diagonal line going up to the right (filled underneath too)
+
+Shitty - he didn't even really show an eq() algorithm :(
+
+### Filters
+
+images have noise, obscuring features
+
+talks about gaussian filter to de-noise an image
+
+gauss blur the image because it averages out all areas of the image, even contrasting sections
+
+median filter applies the median value instead of an average, so doesn't look blurry
+
+he goes to jupyter and adds random_noise() to his image. then tries gaussian and median to show the result (from scipy.ndimage.fliters) *god damn he pronounced scipy "Sky Pie"*
+
+### Edge Detectors
+
+Sobel edge detection
+- applies two masks, one for vertical, the other for horizontal
+- it only reallyl works properly on grayscale
+- you can calculate a magnitude by adding the two masks together and using hypot() function, then normalize
+- you end up with a grayscale image where white is an edge and black is not an edge
+
+### Corner Detection
+
+
+
 ## Working with Images and Video
 
 ## Lab
