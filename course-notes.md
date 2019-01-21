@@ -541,9 +541,41 @@ Sobel edge detection
 
 ### Corner Detection
 
-
+Harris algorithm for corner detection. hand-waves about its implementation, but mentions you can get implementations anywhere.
+- works by putting a square "patch" around an area and determines if the average intensity goes down sharply when you move horizontally and vertically
+- even detects things like eyes in a face
 
 ## Working with Images and Video
+
+### Image Classification (Custom Vision)
+
+customvision.ai is another microsoft cognitive service
+
+makes a new project in customvision.ai projects page. you can choose your azure sub or a "limited trial" separate from that (he chooses the trial). picks Classification / Multiclass / Food
+
+adds 9 pictures of carrots. adds `carrot` as a tag to associate with those photos. the carrots have different colours and orientations. then he adds pictures of apples of various colours and shapes , specifies `apple` tag and uploads.then 
+
+then he hits the green Train button which creates a new iteration. apparently it is well trained with 100% precision and recall. makes it the default iteration so that when a web service calls into this, it uses this trained model as the default
+
+goes to settings gear, sees the keys and endpoints he needs. since it's already trained you need the prediction key and endpoint. jumps to jupyter and installs an SDK designed to work with the custom vision service (hopefully this doesn't fail later in the lab like the other one...). plugs in the key and endpoint, and project id
+
+has two test images in the code which are an apple and a carrot (not in the original sample, i assume)
+
+and tada, the apple is tagged apple with 99.86% and carrot is tagged carrot with 99.97%
+
+### Image Analysis
+
+### Face Detection and Recognition
+
+### Video Basics
+
+### The Video Indexer
+
+### The Video Indexer API
+
+### Real World AI - Seeing AI
+
+Propaganda time
 
 ## Lab
 
