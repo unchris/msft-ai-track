@@ -553,7 +553,7 @@ customvision.ai is another microsoft cognitive service
 
 makes a new project in customvision.ai projects page. you can choose your azure sub or a "limited trial" separate from that (he chooses the trial). picks Classification / Multiclass / Food
 
-adds 9 pictures of carrots. adds `carrot` as a tag to associate with those photos. the carrots have different colours and orientations. then he adds pictures of apples of various colours and shapes , specifies `apple` tag and uploads.then 
+adds 9 pictures of carrots. adds `carrot` as a tag to associate with those photos. the carrots have different colours and orientations. then he adds pictures of apples of various colours and shapes , specifies `apple` tag and uploads.then
 
 then he hits the green Train button which creates a new iteration. apparently it is well trained with 100% precision and recall. makes it the default iteration so that when a web service calls into this, it uses this trained model as the default
 
@@ -565,27 +565,158 @@ and tada, the apple is tagged apple with 99.86% and carrot is tagged carrot with
 
 ### Image Analysis
 
+Computer Vision API - trained using millions of images and even has OCR capability
+
+he's going to use his own profile shot again
+
+hes going to ask for visualFeatures back "categories, description, color"
+
+he prints out the first "caption" that is recommended and it comes out as "man wearing a suit and a tie looking at the camera" but there's no tie lol.
+
+categorizes him as "people young" which is not entirely accurate
+
+dominant colours are grey and black
+
+*This would be a cool service to use to classify all of your photos into categories and build something like an Album program*
+
+Tries a ukelele and then a a football game. manages to guess the second as "a crowd of people watching a football game" which is pretty impressive
+
 ### Face Detection and Recognition
+
+Face API service
+
+grabs `cognitive_face` (wraps Face API) and `pillow` (images package)
+
+uses cognitive_face.face.detect(img_url)
+
+gets back a result with faceIDs
+
+going to draw a rectangle around the face based on its co-ords
+
+Then he tries CF.face.verify(face1, face2) to decide if it's the same person. (he uploaded another image)
+
+comes back with 91.56% confidence it's the same person
+
+He tries a third one with different facial hair and sunglasses but the confidence is down to 53.3%
+
+then he tries a fourth one (not him this time, it's Satya Nadella) and it's 6% confidence same person (meaning not same person)
 
 ### Video Basics
 
+they do `!conda install av -c conda-forge -y` to install `av` which helps with videos
+
+he counts frames and displays the 25th one.
+
+*sigh*
+
 ### The Video Indexer
+
+videoindexer.ai
+
+he opens a video and it has identified two faces and tells you how long they appear in the video. it also picked up keywords *stats course* and *statistical underlying methodologies* it is about a stats course. Speech sentiment is 47% neutral, 53% positive. When you click the keywords it jumps to that part of the video. It also automatically generated a transcript of the video, including some OCR from the video frame that had their names and company on the screen
+
+*this would be SUPER AWESOME for family videos*
+
+you can search the video for things that have been said and jump to those parts of it. you can also correct the transcript and then publish the video with the insights and all.
 
 ### The Video Indexer API
 
+uploads a video from github to videoindexer.ai. it assigns the video an Id. gets the status of it, which is "processing". His account on videoindexer.ai also shows it is 70% processing. they advance time and the state becomes "Processed".
+
+Now he needs to grab a second access token, this time for the particular videoID. embeds the video into the notebook using the accesstoken. then he grabs back the json document with the "insights" which has video metadata, and it says there's a face that starts 8.3 seconds in. it says there's an indoor wall as well.
+
+then he prints out the faces details
+
+then he is able to pull out a thumbnailId for that particular face and then asks api.videoindexer.ai to grab that particular image, and tada it's himself showing up in the video for 5 seconds. then he embeds the insights for that face into the notebook (has the appears for 27% of video, Unknown name). he edits the name to "Graeme Malcolm" which saves it to his videoindexer account. Now that he's saved those details, new videos with that face should properly label it as Graeme.
+
+He re-runs the insights on the video and it indeed shows Graeme in the json result this time
+
 ### Real World AI - Seeing AI
 
-Propaganda time
+Propaganda time. App that narrates what is being seen by the phone's camera, for blind people.
 
 ## Lab
+
+The lab is another Jupyter notebook to be completed up in Azure land.
 
 # Conversation as a Platform
 
 ## Introduction to Bots
 
+### What is a Bot?
+
+*useless video*
+
+### The Microsoft Bot Framework
+
+Bot Builder SDK and Azure Bot Service
+
+*another useless video*
+
+### Creating a Basic Bot
+
+NodeJS basic bot template
+
+Build launches an online IDE but you can also code locally and have it sync to the service through Github
+
+*another useless video*
+
+### Channels
+
+Basically multiple ways of making use of the bot like in Cortana, Microsoft Teams, Skype, Bing (and other things that aren't Microsoft, like Slack)
+
+*another useless video*
+
 ## Building Intelligent Bots
 
+### Bot Intelligence
+
+*another useless video*
+
+### Creating a Q&A Service
+
+qnamaker.ai. he wants to create a knowledge base. create a QnA Maker service on azure. then come back to qnamaker.ai and refresh
+
+then you have to populate it with q&a pairs. he just creates it and will populate it manually
+
+puts in some jokes like "why did the chicken cross the road?" => "To get to the other side". uses the test window to show it works. then publishes it to production. it shows you a sample request URI
+
+### Creating a Q&A Bot
+
+Makes a new "Web App Bot" on Azure. Decides to use C# chooses the Question and Answer template. Goes to Application Settings of the deployed resource. need to fill in a QNA key, host name and knowledge base ID, which come from the QNA knowledge base that was deployed (he picks it out of the sample request URI from previous video)
+
+opens "Test Web Chat" from side panel
+
+"hello" => "hello"
+"Why did the chicken cross the road?" => "to get to the other side!"
+
+hooray it's a bot
+
+### Cortana Skills (Cortana Channel)
+
+Adds a second channel to his joke bot which gives him info to configure it to work with Cortana. Renames bot to Bad Joke Bot and Invocation to "Bad Joker"
+
+It deploys to his own personal Microsoft Account to start (not global available yet)
+
+Then he goes to his windows cortana and says "Ask Bad Joker why the chicken crossed the road" => "May I have your permission?"
+
+So he needs to give permission to connect with his Bad Joke Bot, and tries again
+
+"Ask Bad Joker what's red and invisible?" => "no tomatoes!"
+
+*interesting - he asks in voice, but the result is in text. presumably the chat bots can reply in voice as well, might be worth learning that*
+
+### Real World AI - Cortana Skills
+
+Here comes the propaganda train again, choo choo
+
+OMGERD CORTANA IS EVERYWHERE AND SO GREAT WOW PARTNER WITH MICROSOFT WOO
+
 ## Lab
+
+The Lab is a PDF this time so I added it to the notes. Interesting that these aren't just already in the package you download at the start.
+
+
 
 # Learning More
 
