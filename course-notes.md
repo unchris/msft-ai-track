@@ -716,13 +716,101 @@ OMGERD CORTANA IS EVERYWHERE AND SO GREAT WOW PARTNER WITH MICROSOFT WOO
 
 The Lab is a PDF this time so I added it to the notes. Interesting that these aren't just already in the package you download at the start.
 
-
+Lab is pretty shit. doesn't even do as much as Graeme did in the videos
 
 # Learning More
 
 ## Beyond the Basics
 
+### Introduction to AI Engineering
+
+nothingberder
+
+### The Data Science Virtual Machine
+
+"Data Science Virtual Machine" in Azure portal shows a bunch of them for Linux, Windows in different versions. blah blah buys and provisions it which takes 5-10 minutes (lol Windows? or are all VM deploys this slow?)
+
+Connects via Remote Desktop, has to login using the VM's account, not local machine. Shows a bunch of stuff pre-installed like VSCode, Jupyter, Weka, SQL Server, etc. There's a shortcut on the desktop for "Getting Started"
+
+### Deep Learning and the Microsoft Cognitive ToolKit
+
+The Cognitive ToolKit can be downloaded and used locally, or it can be used through Azure Notebooks which has a tutorial to use CNTK.
+
+In the Data Science VM it's pre-installed. Open Jupyter and there's a CNTK samples folder with the tutorials etc
+
+Why use CNTK? It's designed to take advantage of multiple CPUs or even GPUs to reduce time to train models. Great for Deep Learning techniques, like neural networks.
+
+*These tutorials seem like they'd be very interesting*
+
+### Real World AI - Autonomous Sailplanes
+
+They say they are trying to "teach" sailplanes to fly autonomously. The glider needs to find/predict thermal air bubbles, which helps it rise back up (like eagles use).
+
+This was probably the best of the propaganda videos. Really cool technology/idea.
+
 ## Where Do I Go from Here?
+
+### The first step of the journey
+
+another nothingberder video
+
+### Next Steps
+
+I just copied this stuff quasi-verbatim from the page shown. It's basically just a listing of their services.
+
+> Hopefully, this course has inspired you to learn more about artificial intelligence.
+> If you're an app developer, maybe you want to learn more about how to consume Microsoft Cognitive Services in your apps, or how to build bots using the Bot Framework
+> Or maybe you're a software engineer with an interest in data science and AI, and you want to learn how to create predictive models that use deep learning techniques to power AI solutions.\
+> Whichever of these best describes you, you'll find resources below to help you take the next step in your AI journey!
+
+*App Developer Resources*
+
+Cognitive
+
+https://channel9.msdn.com//events/Connect/2016/102/
+
+https://docs.microsoft.com/en-us/azure/cognitive-services/linguisticanalysisapi/home
+
+https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/overview
+
+https://docs.microsoft.com/en-us/azure/cognitive-services/speech/home
+
+https://docs.microsoft.com/en-us/azure/cognitive-services/translator/translator-info-overview
+
+https://docs.microsoft.com/en-us/azure/cognitive-services/luis/home
+
+https://docs.microsoft.com/en-us/azure/cognitive-services/custom-vision-service/home
+
+https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/
+
+https://docs.microsoft.com/en-us/azure/cognitive-services/face/
+
+https://docs.microsoft.com/en-us/azure/cognitive-services/video-indexer/video-indexer-overview
+
+Bots
+
+https://mva.microsoft.com/en-US/training-courses/getting-started-with-bots-16759
+
+https://dev.botframework.com/
+
+https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/home
+
+https://docs.microsoft.com/en-us/cortana/getstarted
+
+*AI Engineer Resources*
+
+These are basically the next courses in the [Professional Program in AI](https://academy.microsoft.com/en-us/professional-program/tracks/artificial-intelligence/)
+
+- [Intro to Python for Data Science](https://aka.ms/edx-dat208x-about)
+- [Essential Mathematics for AI](https://aka.ms/edx-dat256x-about)
+- [Ethics and Law in Data and Analytics](https://aka.ms/edx-dat249x-about)
+- [Data Science Essentials](https://aka.ms/edx-dat203.1x-about)
+- [Principles of Machine Learning](https://aka.ms/edx-dat203.2x-about)
+- [Deep Learning Explained](https://aka.ms/edx-dat236x-about)
+- [Reinforcement Learning Explained](https://aka.ms/edx-dat257x-about)
+- [Natural Language Processing](https://aka.ms/edx-dev288x-about)
+- [Speech Recognition Systems](https://aka.ms/edx-dev287x-about)
+
 
 
 
