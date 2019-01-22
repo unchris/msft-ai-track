@@ -5,7 +5,7 @@ Chris Cameron
 
 I am auditing [Microsoft Professional Program for Artificial Intelligence track](https://academy.microsoft.com/en-us/tracks/artificial-intelligence/).
 
-The first of 10 courses is [Introduction to Artificial Intelligence (AI)](https://courses.edx.org/courses/course-v1:Microsoft+DAT263x+1T2019/course/) as part of
+The first of 10 courses is [Introduction to Artificial Intelligence (AI)](https://courses.edx.org/courses/course-v1:Microsoft+DAT263x+1T2019/course/).
 
 # Introduction
 
