@@ -37,21 +37,59 @@ meh
 
 ### Lab: Equations
 
-I'm going to try to use Jupyter locally this time instead of up on Azure
+meh
 
 ### Introduction to Linear Equations
 
+meh
+
 ### Intercepts and Slope
+
+good ol' `y = mx + b`
 
 ### Lab: Linear Equations
 
+meh
+
 ### Systems of Equations
+
+meh
 
 ### Lab: Systems of Equations
 
+meh
+
 ### Lesson Review
 
+Got everything right.
+
 ## Quadratic Equations and Functions
+
+### Exponentials, Radicals, and Logarithms
+
+### Lab: Exponentials
+
+### Polynomials
+
+### Polynomial Operations
+
+### Lab: Polynomials
+
+### Factorization
+
+### Factoring Squares
+
+### Lab: Factorization
+
+### Introduction to Quadratic Equations
+
+### Lab: Quadratic Equations
+
+### Functions
+
+### Lab: Functions
+
+### Lesson Review
 
 ## Module Assessments
 
