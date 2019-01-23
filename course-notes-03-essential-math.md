@@ -150,6 +150,27 @@ no access while auditing
 
 ## Differential Calculus Foundations
 
+### Rates of Change
+
+- slope of a line
+- slope of a secant line
+
+### Lab: Rates of Change
+
+meh
+
+### Introduction to Limits
+
+
+
+### Continuity
+
+### Finding Limits
+
+### Lab: Limits
+
+### Lesson Review
+
 ## Differentiation and Derivatives
 
 ## Module Assessments
