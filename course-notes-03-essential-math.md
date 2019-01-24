@@ -25,27 +25,6 @@ meh
 
 # Equations, Graphs, and Functions
 
-## Algebra Fundamentals
-
-### Getting Started with Equations
-
-meh
-
-### The Distributive Property
-
-meh
-
-### Lab: Equations
-
-meh
-
-### Introduction to Linear Equations
-
-meh
-
-### Intercepts and Slope
-
-good ol' `y = mx + b`
 
 ### Lab: Linear Equations
 
@@ -161,13 +140,35 @@ meh
 
 ### Introduction to Limits
 
-
+I think this was the worst possible introduction to limits they could have given
 
 ### Continuity
 
+ugh
+
 ### Finding Limits
 
+through looking at graphs and interpolation. talks about approaching from negative, positive sides, sometimes two-sided limits don't exist. useful info but this is so brief
+
 ### Lab: Limits
+
+I've switched now to running Jupyter locally because Azure Notebooks is a shitshow (at least in the free tier anyway)
+
+I ran the command from `course-notes-01` that begins `docker run` but instead of the whole thing I just bashed in and ran the commands in the `-c` argument manually.
+
+Later I had to exec into the running container to do `conda3 install matplotlib` so that the inline magic call would work `%matplotlib inline`
+
+I can see why people tend to run `anaconda3` instead of `miniconda3` - this way they don't have to install all of this on their own. still I like that this takes up way less space on my machine and I should eventually make Dockerfile that wraps this.
+
+This Lab has a much better explanation of limits and continuity than the video, but still lacking.
+
+They even bring up asymptotes and infinity in the lab which wasn't in the video lectures.
+
+Had to install pandas `conda install pandas` for some more inline magic.
+
+They bring up _rationalization_ in this part of the lab which was a critical miss in the videos. 
+
+And finally they're just going to drop some common limit addition, subtraction, multiplication, division and exponentiation with no theoretical backing whatsoever. 
 
 ### Lesson Review
 
