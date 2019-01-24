@@ -172,11 +172,154 @@ And finally they're just going to drop some common limit addition, subtraction, 
 
 ### Lesson Review
 
+easy, they didn't get into any advanced topic at all
+
 ## Differentiation and Derivatives
+
+### Introduction to Differentiation
+
+their basic explanation is that if `y = f(x)` then `m = f'(x)` where `m` is the slope and `f'(x)` is the derivative. i guess that's a pretty brief introduction
+
+### Differentiability
+
+Knowing whether a function can have a derivative at every point on the function's line. It has to be continuous and the tangent can't be vertical, and it has to be "smooth" at that point.
+
+this was stupid brief
+
+### Derivative Rules and Operations
+
+ahh good ol' calculus identities
+
+- if `f(x) = c` then `f'(x) = 0` (makes sense because if y is a constant it's a horizontal line meaning slope is 0)
+- power rule: `f(x) = x^n` then `f'(x) = nx^(n-1)`
+- `f(x) = g(x) + h(x)` then `f'(x) = g'(x) + h'(x)`
+- product rule: `f(x) = g(x) * h(x)` then `f'(x) = (g'(x) * h(x)) + (g(x) * h'(x))`
+- quotient rule: `f(x) = g(x)/h(x)` then `f'(x) = (g'(x) * h(x) - g(x) * h'(x))/[h(x)]^2`
+- chain rule: 'f(x) = g(h(x))` then `f'(x) = g'(h(x)) * h'(x)`
+
+### Lab: Differentiation and Derivatives
+
+reminder that slope is calculated as delta(y)/delta(x) meaning `m=(f(x+h) - f(x))/((x+h)-x)` which is how we get to derivatives where you're trying to find a value of h so small but not quite 0 so that you can effectively calculate the slope at a point on a curve. so you get `lim(h->0)(m)` using the definition of `m` just laid out.
+
+they also bring up notations like Lagrange
+
+```
+ \begin{equation}f'(x) = \lim_{h \to 0} \frac{f(x + h) - f(x)}{h} \end{equation}
+```
+
+and Leibniz
+
+```
+\begin{equation}\frac{d}{dx}f(x) = \lim_{h \to 0} \frac{f(x + h) - f(x)}{h} \end{equation}
+```
+
+and generalized for a specific point `a`
+
+```
+\begin{equation}f'(a) = \lim_{h \to 0} \frac{f(a + h) - f(a)}{h} \end{equation}
+```
+
+This lab also makes a better example of what it means that a derivative can only be calculated when the curve is "smooth" at that point, showing a very sharp turn in direction, while the video showed a point that did not look sharp at all.
+
+Finally a justification for Leibniz notation being that it makes sense when you're doing derivatives of equations instead of functions. (though they've put no effort into explaining the difference between an equation and a function, probably because it's practically irrelevant in data science programming? The best they offer later is "functions are just equations encapsulated as a named entity that return a value" which is, I guess a distinction but it's hardly what `function` means in mathematics
+
+The lab demonstrates some of the rules like sub, power, product etc. It just seems so fast compared to taking a week or two to demonstrate these same things in high school and university.
+
+### Using Derivatives to Analyze Functions
+
+- finding a relationship between function and its derivative
+- derivative positive: rising / negative: falling / 0: neither
+
+finally use the word "inflection point" - they should have had a unit on curves and their terms
+
+- whenever the value of the derivative is zero, it's a "critical point"
+  - derivative always 0 -> function is a constant C with 0 slope
+  - derivative positive to negative -> function is changing direction from upward to downward indicating a local maximum
+  - derivative negative to positive -> function is changing direction from downward to upward indicating a local minimum
+  - derivative pos to pos or neg to neg but touches 0 briefly -> inflection point where the function flattens out then resumes changing in the same direction (imagine a wavy slide in a park where it's occasionally flat)
+
+### Second Order Derivatives
+
+- `f''(x)` is negative when `f'(x)` is 0 means local maximum because it's decreasing at that point, so `f(x)` is the value of the maximum at that point
+- `f''(x)` is positive when `f'(x)` is 0 means local minimum because it's increasing at that point,
+so `f(x)` is the value of the minimum at that point
+
+### Optimizing Functions
+
+they just kind of restate what you're taught in Second Order Derivatives
+
+### Lab: Critical Points and Optimization
+
+The only decent part of this is they give practical examples of functions like growth of flowers when applying fertilizer, or maximizing potential revenue given a function modelling it against subscriber count
+
+### Multivariate Differentiation
+
+f(x,y) = x^2 + y^2
+
+partial derivatives is about solving for each independently (i.e., for x and y separately)
+
+e.g,
+
+```
+d(x,y)/dx = d(x^2 + y^2)/dx
+
+then d(x^2)/dx = 2x and d(y^2)/dx = 0
+
+then d(x,y)/dx = 2x
+
+similarly,
+
+d(x,y)/dy = d(x^2 + y^2)/dy
+
+then d(x^2)/dy = 0 and d(y^2)/dy = 2y
+
+then d(x,y) = 2y
+```
+
+### Lab: Multivariate Differentiation
+
+Of course they leave it to the lab to explain what the point of partial derivatives is. This course should just be a short text book and review questions, what is the point of narrating graphs?
+
+GRADIENTS! I miss math class so much.
+
+On the other hand I don't have the patience to type out a gradient formula in vim. Suddenly Jupyter notebooks look really interesting...
+
+Why are they using Python lists when they taught the value of `np.array` in the Python course? All these unnecessary list appends and comprehensions...
+
+`numpy.meshgrid` is cool. `matplotlib.pyplot.quiver` and `matplotlib.pyplot.contour` too.
+
+Here are some verbatim notes from the lab I will copy now in case they become relevant later as this section of my calculus is a bit rusty:
+
+> Notice the following properties of this plot. 
+> - The arrows in the plot point in the direction of the gradient.
+> - The width of the arrows is proportional to the value of the gradient. The width of the arrows and the **gradient decreases as function gets closer to the minimum**. If this is the case everywhere, you can say that a function is **convex**. It is always much easier to find minimum of convex functions.  
+> - The **direction of the gradient is always perpendicular to the contours**. This is an important property of multivariate functions. 
+
+They then briefly bring up Gradient Descent which means we are finally getting into the relevant maths!
+
+### Introduction to Integration
+
+Integral = AUC. Integral = Anti-derivative, so we need a function whose derivative is f(x). he uses the power rule in reverse, tada.
+
+### Lab: Integration
+
+Integrals are the inverse of derivatives.
+
+Need to `conda install scipy` now so we can make use of `scipy.integrate.quad`.
+
+It's kind of a shame that they only really show calculating anti-derivatives for easy cases like the power rule and then skip right to AUC calculations for contrived easy examples. This stuff gets harder. Though I guess they're basically just prepping you for using numerical approximation methods to calculate it for you later.
+
+### Lesson Review
+
+These were decent questions but do not fully cover the work. My guess is the Module Assessments must be much more thorough. Hopefully so since they're gated behind $99 :)
 
 ## Module Assessments
 
+Couldn't take them due to auditing.
+
 # Vectors and Matrices
+
+
 
 ## Vectors
 
