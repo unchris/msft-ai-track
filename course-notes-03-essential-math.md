@@ -319,18 +319,295 @@ Couldn't take them due to auditing.
 
 # Vectors and Matrices
 
-
-
 ## Vectors
+
+### Introduction to Vectors
+
+Explains that it's a set of co-ordinates of magnitude encoding a direction and that it's standard to come from the origin but not necessary.
+
+He also brings up polar co-ordinates, and how you can get a magnitude+bearing as the hypotenuse of the triangle formed by the first two co-ordinates. Brings up the sort(sum of squares) approach to getting the hypotenuse magnitude then later brings up finding the angle via inverse tangent, but hand-waves about more difficult problems and points towards more of the same "just use your tools to calculate it".
+
+### Vector Addition
+
+Add the individual components, mentions it's like "adding another leg to the journey" by putting the tail of the second vector at the head of the first. That was brief!
+
+### Lab: Vectors
+
+They make good use of `matplotlib.pyplot.quiver()` to display vectors on a `grid()`.
+
+They are demonstrating the sum of squares method for finding the magnitude of the vector but I wish they would bring up that leaving it in squared form is commonly better for calculations purposes. I wonder if maybe common wisdom has changed on that topic?
+
+Useful for finding vector magnitude, using `numpy.linalg.norm(v)` .
+
+Bring up inverse tangent and "opposite over adjacent" but no general intro to SOHCAHTOA which is a shame.
+
+`math.atan()` and `math.degrees()` (EWWWW use radians!)
+
+A reminder that:
+
+- if x is negative, add 180deg to result of `atan()` and 
+- if x is positive and y is negative, add 360deg to result of `atan()`
+
+Then, just after explaining the rules, they go on to say that `numpy.arctan2()` will do the correction for you.
+
+### Vector Multiplication
+
+- scalar multiplication: vector * scalar => new vector
+- dot product: vector . vector => scalar
+- cross product: vector x vector => scalar
+
+his explanation of cross product has NO theory at all, he just says "oh you do this and this and this" and now you have a vector... I guess this will be another place where the math is just done by `numpy` so they don't want to talk about it?
+
+### Lab: Vector Multiplication
+
+You can do scalar multiplication just by multiplying the numpy vector by a scalar e.g., `2 * np.array([2, 1])` or `np.array([2,1]) / 2`
+
+Dot product is done via `numpy.dot(v1, v2)` but you can also use the `@` operator as in `v1 @ v2`
+
+I forgot to mention they briefly introduced the symbol for magnitude as the double bar brackets i.e., `||e||` (can't do an arrow in ascii but you get what I mean. `mag(e)` takes me one more char so I may just use that.
+
+cosine rule comes in suddenly to teach how to get the angle between two vectors. Here it is in Python
+
+```python
+vMag = numpy.linalg.norm(v)
+sMag = numpy.linalg.norm(s)
+cosTheta = (v @ s)/(vMag * sMag)
+theta = math.degrees(math.acos(cosTheta))
+```
+
+They bring up that vector multiplication (cross product) results in a vector that is at right angles to both of the multiplied vectors and so the cross product only really makes sense with 3D vectors.
+
+In Python:
+
+```python
+r = numpy.cross(p,q)
+```
+
+In math:
+
+```
+r1 = p2q3 - p3q2
+r2 = p3q1 - p1q3
+r3 = p1q2 - p2q1
+```
+
+### Lesson Review
+
+Covers a simple addition, scalar multiplication, dot product, and cross product.
 
 ## Matrices
 
+### Introduction to Matrices
+
+Matrices usually named with capital letter.
+
+You can add or subtract matrices of the same size by adding up the corresponding components in each.
+
+The negative of a matrix is just the same matrix with reversed signs. (They've kind of given away scalar multiplication here without showing it)
+
+The transpose is superscripted T.
+
+Refresher:
+
+```
+|3 5 1| transposed |3 1|
+|1 4 3| becomes:   |5 4|
+                   |1 3|
+```
+
+### Lab: Matrices
+
+```
+numpy.array([[1,2,3],
+             [4,5,6]])
+
+or the specialist subclass
+
+```
+numpy.matrix([[1,2,3],
+              [4,5,6]])
+```
+
+You can add and subtract them with `+` and `-` but only work if the matrices have the same shape.
+
+Numpy arrays have a `.T` attribute that returns the transpose (they call it a function but it's not).
+
+### Matrix Multiplication
+
+Scalar and dot product.
+
+Dot product requires the matrices to have the transposed shape of each other (e.g., 2,3 row,col multiplying a 3,2) which includes the special case when they both rows=cols.
+
+### Identity Matrices
+
+The equivalent of the number 1 in matrix terms. It's a zero matrix with 1 in all of the elements where i=j (i.e., diagonal top left to bottom right). When you dot product an Identity matrix with another, it is like multiplying the other matrix by 1.
+
+### Matrix "Division"
+
+Multiplying by the reciprocal.
+
+Divide matrix A by matrix B means you want to multiply A by the inverse of B. 
+
+Find the inverse of a matrix: specific formula that I wish they would explain.
+
+Determinant of a matrix is briefly brought up as subtracting the diagonal elements from each other. Ughhhhh explain thisss!
+
+"However in reality you'll likely use tools or scripting languages to do the heavy lifting for you" --> yup, why am I yelling?
+
+### Solving Systems of Equations with Matrices
+
+"One of the cool things about matrices" haha ok I'll accept it.
+
+easier to just show his example:
+
+```
+2x + 4y = 10
+3x + 3y = 12
+
+in matrix form:
+
+|2 4| . |x| = |10|
+|3 3|   |y|   |12|
+
+inverse multiplication:
+
+    -1
+|2 4| . |10| = |x|
+|3 3|   |12|   |y|
+
+which is roughly
+
+|-0.5 0.67| . |10| = |x|
+|0.5  0.33|   |12| = |y|
+
+calc the dot product, giving you x and y
+
+|3| = |x|
+|1| = |y|
+```
+
+### Lab: More Matrices
+
+`A @ B` works for numpy.array() matrices for dot product. But with numpy.matrix() you can use `A * B`
+
+Matrix dot product is not commutative, i.e., A.B==B.A DOES NOT HOLD as a rule, though it is possible.
+
+They don't bring it up but `np.identity(n)` will give you an nxn identity matrix.
+
+They give the formula for calculating the inverse of a 2x2 matrix
+
+```
+    -1
+|a b|  =___1___ .  | d -b|
+|c d|   ad - bc    |-c  a|
+```
+
+The determinant of the matrix (above) is the `ad - bc` part.
+
+Naturally, you can use `invB = numpy.linalg.inv(B)` to calculate the inverse, and if you had already been using `numpy.matrix()` then it's available also as `B.I` (this probably has some fail cases for when an inverse is unavailable)
+
+They show the formula for doing this for a 3x3 matrix but even I don't feel like writing it out now. It's available online in any math tutorial anyway. Suffice it to say you can still use `numpy.linalg.inv(B)` on a 3x3 so woot woot.
+
+Then the capstone which is the systems of equations part where you've transformed your Ax + By = C and Dx + Ey = F into matrix form:
+
+```
+|A B| . |x| = |C|
+|D E|   |y|   |F|
+```
+
+you can then solve this by storing them as matrices (respectively, X, Y, and Z for the above)
+
+```
+Y = numpy.linalg.inv(X) @ Z
+```
+
+### Matrix Transformations
+
+Functions that operate on vectors are called transformations.
+
+If your transformation is a matrix, you perform the dot product to appyly the transform.
+
+### Eigenvalues and Eigenvectors
+
+Matrix dot Vector = Vector.
+
+This explanation of eigenvectors was terrible. One of the most fundamentally important concepts in matrix mathematics. I hope the lab has better intro for people.
+
+Eigenvectors of a matrix can be stored in a matrix and its eigenvalues can be stored in a diagonal matrix. Usually the Eigenvalue matrix is represented with the symbol Lambda.
+
+### Lab: Transformations, Eigenvalues, and Eigenvectors
+
+Ah here at least they explain that transformations can map from 2D to 2D space or 2D to 3D space.
+
+When a matrix transforms a vector it can change it in at least one of two ways:
+
+- Changing the length (magnitude)
+- Changing the direction (amplitude)
+
+An Affine Transformation is one which multiplies a vector by a Matrix and then adds an offset vector (sometimes called _bias_), e.g., `T(v) = Av + b` (v and b are vectors)
+
+This is "the basis of linear regression, a core foundation for machine learning". `A` defines the _features_, `v` is the _coefficients_ and `b` is the _intercept_.
+
+When a matrix transform is the equivalent of a scalar-vector multiplication, then the scalar-vector pairs that correspond to the matrix are known respectively as eigenvalues and eigenvectors. We generally indicate eigenvalues using Lambda, and the formula `T(v) = Av` can be restated `T(v) = Lambda.v`.
+
+This means Lambda is the eigenvalue and `v` is the eigenvector for `A`.
+
+Matrices can have multiple eigenvector-eigenvalue pairs and they can be calculated manually but you can use `eVals, eVecs = numpy.linalg.eig(A)` instead.
+
+(The columns of the Eigenvector matrix result are the eigenvectors
+
+Oh my god they're just going to bring up Eigendecomposition off-hand in the lab. Alright.
+
+We can decompose a matrix `A = Q L Qinv` where Q is the matrix of eigenvectors, L is a matrix with the eigenvalues along the diagonal, and Qinv is the inverse of Q.
+
+You can get Q, L and Qinv like so:
+
+```
+l, Q = numpy.linalg.eig(A)
+L = numpy.diag(l)
+Qinv = numpy.linalg.inv(Q)
+```
+
+So the original transform `A.v` can be represented as `Q.L.Qinv.v` Since `A` decomposes into `Q.L.Qinv`
+
+Rank of a square matrix is the number of non-zero eigenvalues of the matrix. (number of non-zero diagonal elements in L). A full rank matrix has the same number of non-zero eigenvalues as the dimension of the matrix. Rank deficient when it's fewer than dimensions. A rank deficient matrix does not have an inverse, as a result.
+
+One easy way to spot a rank-deficient matrix is if some rows are scalar multiples of another row.
+
+You can calculate the inverse of a full rank square matrix using `Ainv = Q.Linv.Qinv`
+
+### Lesson Review
+
+Covers matrix addition, transpose, dot product, and inverse.
+
 ## Module Assessments
+
+Unavailable
 
 # Statistics and Probability
 
 ## Statistics Fundamentals
 
+### Data
+
+### Visualizing Data
+
+### Lab: Data and Visualization
+
+### Measures of Central Tendency
+
+### Measures of Variance
+
+### Lab: Statistics Fundamentals
+
+### Comparing Data
+
+### Lab: Comparing Data
+
+### Lesson Review
+
 ## Probability
 
 ## Module Assessments
+
+Unavailable
