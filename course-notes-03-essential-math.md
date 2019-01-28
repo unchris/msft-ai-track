@@ -319,18 +319,125 @@ Couldn't take them due to auditing.
 
 # Vectors and Matrices
 
-
-
-## Vectors
-
-## Matrices
-
-## Module Assessments
+Due to a catastrophic crash I lost all my notes for this section.
 
 # Statistics and Probability
 
 ## Statistics Fundamentals
 
+Due to a catastrophic crash I lost all my notes for this section. I am continuing in the subsection which follows.
+
+### Lab: Statistics Fundamentals
+
+Pandas data frames have `mean()`, `median()`, and `mode()` functions. And `min()` and `max()`
+
+It also looks like you can do plots directly from the data frame, e.g., `df.plot.hist()` for a histogram. You still need to do `matplotlib.pyplot.show()` later
+
+`scipy.stats.gaussian_kde(x_values)` will give you a density function so you can generate a curve (y values) for `x_values` input. Helps you interpret your histograms of data giving a sense of skewness. If the tail is to the right, it's right-skewed, and vice-versa.
+
+If no skew, it's a normal/gaussian curve.
+
+`df[column].skew()` will give positive for right skew, negative for left skew, ~0 for no skew
+`df[column].kurt()` will give measure of `kurtosis` or "sharpness" of the curvature. Higher numbers for more kurtosis. They don't explain the term very well.
+
+Had to install `statsmodels` (`conda install statsmodels`)
+
+`scipy.stats.percentileofscore(df[column], score, type)` will calculate the percentile for a particular data point's "score" (value). `type` indicates either `weak` or `strict` which will either include or not include the particular score when calculating. `type=rank` will calculate grouped percentiles (useful when some data points have the same score).
+
+`df[column].quantile([0.25, 0.5, 0.75])` will print quantiles (you can pick values to get percentiles, quartiles, etc)
+
+When you plot a box chart the outliers will appear as open circles outside of the box-and-whiskers.
+
+`df[column].var()` for variance
+
+`df[column].std()` for standard deviation
+
+Reminder that in a normal distribution
+
+- ~68.26% of values within 1 stddev
+- ~95.45% of values within 2 stddev
+- ~99.73% of values within 3 stddev
+
+To calculate z-score you do `Z = (x-xbar)/s)` where `x` is a particular score, `xbar` is the mean score, and `s` is the standard deviation. This formula's terms are for the "sample" variant. For the full population `xbar` would be `mu` and `s` would be lower case `sigma`
+
+Then, they show right at the end you can just write `df.describe()` To get `count`, `mean`, `stddev`, `min`, `25%`, `50%`, `75%`, `max` for each of the columns in your `df`. `median is not included so you still need to run that (I wonder if you could overload `describe()` to provide more data?)
+
+### Comparing Data
+
+Calculate a statistic `correlation` to determine  relationship between two variables. correlation is mapped from -1 to 1. Positive values mean a positive correlation, negative mean negative correlation.
+
+Draw a line of best fit using least squares regression. Can be used to predict one variable given another if it fits well.
+
+### Lab: Comparing Data
+
+Comparing Multivariate data and making sure the values are normalized so you can actually compare them. You can run a min-max scaling to get values proportional to the originals but between 0 and 1. 
+
+```
+from sklearn.preprocessing import MinMaxScaler
+scaler = MinMaxScaler()
+df['col1','col2','col3'] = scaler.fit_transform(df['col1','col2','col3'])
+```
+
+(need to `conda install scikit-learn` to use `sklearn`)
+
+You can also compare bivariate data with a scatterplot to see if there is any apparent relationship.
+
+`df.plot(kind='scatter', ...)`
+
+Here's an example of how they plot a line of best fit using the usual suspects:
+
+```
+# Add a line of best fit
+plt.plot(np.unique(df['Grade']), np.poly1d(np.polyfit(df['Grade'], df['Salary'], 1))(np.unique(df['Grade'])))
+```
+
+This is for a data frame where Grade and Salary were not normalized so it should be applicable. This line of best fit can show if there's some _colinearity_
+
+To calculate the correlation statistic, you can use `df['col'].corr(df['col2]')` which will give you either positive negative or near 0 in range -1...+1
+
+Least Squares Regression is about calculating a line of best fit for a set of points. You already have x and y (they are the two variables you're comparing) in the `y = mx + b` equation, so need a y-intercept and slope that creates a line that best fits the points. 
+
+We're looking for a linear function `f(x)` which takes the x-values and produces NEW y values which are close to the original y values. The error is measured as the distance between y-f(x) and to get the overall error, you square each error and add them all up. Thus the best line has the LEAST squared error which is why this is called Least Squares Regression.
+
+They list the formula for calculating `m` and then subsequently `b` in the `y=mx+b` equation. The error values are often called `residuals` when comparing estimated values from `f(x)` with known values `y` (this was brought up in the first course!)
+
+You can use `scipy.stats.linregress()` function to do most of the work for you.
+
+```
+m, b, r, p, se = stats.linregress(df['col1'], df['col2'])
+
+df['fx'] = (m*df['col1']) + b
+df['error']  = df['fx'] - df['col2']
+```
+
+When you have a good-fitting line, you can use it to predict values for any given x value.
+
+### Lesson Review
+
+This covered mean, median, stddev, and skewness. Not particularly good review.
+
 ## Probability
+
+### Probability Basics
+
+
+
+### Conditional Probability and Dependence
+
+### Binomial Variables and Distributions
+
+### Lab: Probability
+
+### Sample and Sampling Distributions
+
+### Confidence Intervals
+
+### Lab: Sampling Distributions
+
+### Hypothesis Testing
+
+### Lab: Hypothesis Testing
+
+### Lesson Review
 
 ## Module Assessments
