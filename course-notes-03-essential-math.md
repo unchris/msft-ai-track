@@ -699,13 +699,70 @@ This covered mean, median, stddev, and skewness. Not particularly good review.
 
 ### Probability Basics
 
-next
+Based on experiments or trials with an uncertain outcome. Gives a dice roll as example.
+
+Sample Space: all the possible outcomes of the experiment
+Event: something which produces a specific outcome
+
+P to denote probability. Usually an uppercase letter for specific event. 
+
+`P(A) = (number of sample points that result in the event) / (number of sample points in the sample space)`
+
+So for a die roll it's `P(A) = 1/6` for example.
+
+The probability of it not to occur is P(A') which is the compliment. So in the die roll, 5/6. `P(A) + P(A') = 0` always adds up
 
 ### Conditional Probability and Dependence
 
+Rolling a die once doesn't affect subsequent roles. So the events are independent.
+
+Other events are dependent. E.g., taking a card from a deck leaves fewer of that kind of card in the deck, so affects probability of subsequent events.
+
+For independent events A, B, C, what's the probability of all three occurring?
+
+`P(A int B int C) = P(A) * P(B) * P(C)` (int = intersection)
+
+Consider another two events A and B. And you want to know the probability of A OR B occurring. What if parts of event A intersect with event A? (A = roll an odd number, B = roll a number divisible by 3, note that `3` is in both events outcomes)
+
+`P(A U B)`=`P(A) + P(B)` gives you the probability of all the events occurring in A and B, but we want to subtract the events that occur in both so they aren't double-counted, so we need to subtract `P(A int B)`, so ultimately `P(A U B)` == `P(A) + P(B) - P(A int B)` == `P(A) + P(B) - (P(A)*P(B))`
+
+For dependent events it's different. Take lottery drawing, and your numbers are 2,5,4. Once you pick 2 (event A) then the probability of that was P(A), but the probability of the next one has changed because fewer balls are in the bowl. The next ball is now `P(B|A)` (probability of B given A)
+
+`P(B|A) = P(A int B) / P(A)`
+
+now we can even re-arrange it to get: `P(A int B) = P(A) * P(B|A)`
+
+Now you can extend this to calculate `P(C)` (when you chose ball 4)
+
+P(A int B int C) = P(A) * P(B|A) * P(C|A int B)`
+
 ### Binomial Variables and Distributions
 
+Apply probability to statistics.
+
+binomial variable: number of successful outcomes of a non-dependent experiment with two possible outcomes; success or failure. For example, you pick three people from a class and want to know the probability that 2/3 of them have green eyes. `X` is the binomial variable, and you want to calculate the probability of a given value of `x` (lowercase).
+
+so, `P(x=2) = p^2((1-p)^1)`, where `p` is the probability of green eyes and `(1-p)` is the probability of other eye colours.
+
+k successes out of n trials. We want 2 successes out of 3 trials.
+
+`P(x=2)= p^k((1-p)^(n-k))` is the general form.
+
+`nCk` or `n choose k` is calculated `n! / (k!(n-k)!`
+
+but this isn't the whole formula yet, because this hasn't yet accounted for the fact that there are multiple possible cases where two of the students have green eyes. If you work it out it says there are 3 combinations (which is true).
+
+So this gives you the probability mass function or PMF which is
+
+`P(x=k) = (n choose k) * p^k((1-p)^(n-k))` (you're basically multiplying nCk by the formula just developed.
+
+A result of the Central Limit Theorem causes the distribution of the PMF values to resemble a normal distribution with the mean referred to as the "expected value for the variable" or `E(x) = mu`
+
+Wow he really breezed through this stuff. This needs more time spent on it, even if I've already seen it before, it was too brief a refresher even.
+
 ### Lab: Probability
+
+
 
 ### Sample and Sampling Distributions
 
