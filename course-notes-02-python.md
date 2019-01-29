@@ -1,4 +1,4 @@
-Introduction to Artificial Intelligence (AI) - Course Notes
+Introduction to Python for Data Science - Course Notes
 ============
 January 2019
 Chris Cameron

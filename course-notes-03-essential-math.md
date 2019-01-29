@@ -1,4 +1,4 @@
-Introduction to Artificial Intelligence (AI) - Course Notes
+Essential Mathematics for Machine Learning: Python Edition - Course Notes
 ============
 January 2019
 Chris Cameron
@@ -704,7 +704,7 @@ Based on experiments or trials with an uncertain outcome. Gives a dice roll as e
 Sample Space: all the possible outcomes of the experiment
 Event: something which produces a specific outcome
 
-P to denote probability. Usually an uppercase letter for specific event. 
+P to denote probability. Usually an uppercase letter for specific event.
 
 `P(A) = (number of sample points that result in the event) / (number of sample points in the sample space)`
 
@@ -770,15 +770,15 @@ Mutually exclusive events. Example: what's the probability that a single coin fl
 
 Another example is, what's the chance of rolling a 6 and an odd number in the same dice roll? `P(A U B)=0` again.
 
-`scipy.special.comb` can be used to calculate `n choose k`. 
+`scipy.special.comb` can be used to calculate `n choose k`.
 
 OK so here they explain the two different formulas for `P(x=k)` much better.
 
 For the binomial variables/distributions you can use the form `P(x=k) = (n choose k)` but when there is _bias_ in the results (i.e., the probability of event being tested for failure and success is not equal) then you have to account for the bias.
 
-In this case, it's not as simple as saying n possibilities, choose k of them. In this case you have to calculate the probability across your experiment of the k successes and the n-k failures, and then multiply it by `(n choose k)` which is to say, multiply it by the number of ways k successes and n-k failures can occur. 
+In this case, it's not as simple as saying n possibilities, choose k of them. In this case you have to calculate the probability across your experiment of the k successes and the n-k failures, and then multiply it by `(n choose k)` which is to say, multiply it by the number of ways k successes and n-k failures can occur.
 
-So first, the probability of k successes and n-k failures is `p^k * ((1 - p)^(n-k))` where `p` is the probability of success. So, e.g., in this case let's say the probability of success is 0.25, and you want to know the chance of 3 successes out of 5 events, you would calculate (0.25^3) * (0.75^2), or about 0.088. 
+So first, the probability of k successes and n-k failures is `p^k * ((1 - p)^(n-k))` where `p` is the probability of success. So, e.g., in this case let's say the probability of success is 0.25, and you want to know the chance of 3 successes out of 5 events, you would calculate (0.25^3) * (0.75^2), or about 0.088.
 
 Second, you multiply that by all the possible ways you can get 3 successes and 2 failures, which is (n choose k) or (5 choose 3) or 5.  so the total probability `P(x=k) = 5 * 0.088 = 0.01375`
 
@@ -844,7 +844,7 @@ In a confidence interval, the value of the +/- is called the _margin of error_.
 
 What about when the data is continuous instead of discrete? Up until now we've been treating discrete values as continuous and creating sampling distributions of _proportions_, i.e., `phat` ("P hat"). Formulae are different when the data is continuous.
 
-In this case, the means of each sample are called `xbar` ("X Bar") and  the sampling distribution of those means will be called `Xbar` (capital X). 
+In this case, the means of each sample are called `xbar` ("X Bar") and  the sampling distribution of those means will be called `Xbar` (capital X).
 
 If a variable X can be assumed to be random variable representing every possible outcome then its mean (`mu_x`) is the population mean (`mu`). The mean of the `Xbar` sampling distribution (which is indicated as `mu_xbar`) is considered to have the same value. Or, `mu_x = mu_xbar`.
 
@@ -874,7 +874,7 @@ How many stddev's above the `H_0` mean of `0` is our sample mean `xbar`? Once we
 
 We then set a threshold `alpha` under which we consider we consider it too improbable under random chance alone that our sample mean was in this area. Most commonly it's set to 0.05 (5%).
 
-When the stddev of the pop is known, we call it a `z-test` because normal distribution often called a z-distribution and because of `z-zcores`. When the stddev of the pop is not known, it's referred to as a t-test and based on an adjusted version of a normal distribution called a Student's t distribution (where the distribution is flattened to allow for more sample variation depending on the sample size). 
+When the stddev of the pop is known, we call it a `z-test` because normal distribution often called a z-distribution and because of `z-zcores`. When the stddev of the pop is not known, it's referred to as a t-test and based on an adjusted version of a normal distribution called a Student's t distribution (where the distribution is flattened to allow for more sample variation depending on the sample size).
 
 TIL:
 
