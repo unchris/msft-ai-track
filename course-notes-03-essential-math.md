@@ -818,17 +818,113 @@ These can be accomplished with `scipy.stats.binom.mean(n,p)`, `scipy.stats.binom
 
 ### Sample and Sampling Distributions
 
+When you don't actually know the probability of certain events happening, you can sample a population and find out a proportion `phat` which are one way, and `1-phat` which are the other way. (e.g, phat might be the number of people with red hair / n to get proportion like 0.33 if it's 33/100). the mean of this sample is `u=phat` which isn't very fair, so you have to collect more samples, to see a Sample Distribution. In this case you're plotting the means (`mu`, i.e., `phat`) for each sample).
 
+With enough samples, the central limit theorem "ensures" you get a normal distribution of means. Then the mean of this distribution will be the mean of the sample means and assumed to be the population mean (so we use mu and capital letters) or `mu_p=sum(x-1 to N)phat_i / N`
+
+The standard deviation is called the standard error when dealing with probability distributions and is calculated as `sigma_p = sqrt(p(1-p)/n)`
 
 ### Confidence Intervals
 
+A confidence interval is a range of values around a sample statistic within which we're confident that the true parameter lies.
+
+How do we define, e.g., 95% confidence interval? Since the data is showing a normal distribution, we can look up a table of z-scores to find out what our margin of error is, to give a confidence interval for our mean. e.g, if the mean is 0.33, you look up z-score and multiply it by the standard deviation (standard error) that we got. the z-score for 95% confidence interval is 1.96 and let's say the standard error is 0.0466, then your confidence interval is `0.33 +/- (1.96*0.466)` or `0.33 +/- 0.091`, so `mu +/- (Zscore * stderror)`
+
 ### Lab: Sampling Distributions
+
+Right at the top of the lab:
+
+> Most statistical analysis involves working with distributions - usually of sample data.
+
+When talking about probability the mean is also known as the _expected value_.
+
+The central limit theorem applies to any distribution of sample data if the size of the sample is large enough. The effect of the central limit theorem is that as you increase the number of and/or size of samples, the mean remains constant but the amount of variance around it is reduced.
+
+In a confidence interval, the value of the +/- is called the _margin of error_.
+
+What about when the data is continuous instead of discrete? Up until now we've been treating discrete values as continuous and creating sampling distributions of _proportions_, i.e., `phat` ("P hat"). Formulae are different when the data is continuous.
+
+In this case, the means of each sample are called `xbar` ("X Bar") and  the sampling distribution of those means will be called `Xbar` (capital X). 
+
+If a variable X can be assumed to be random variable representing every possible outcome then its mean (`mu_x`) is the population mean (`mu`). The mean of the `Xbar` sampling distribution (which is indicated as `mu_xbar`) is considered to have the same value. Or, `mu_x = mu_xbar`.
+
+The standard deviation of the sample mean, which is technically the standard error, is `sigma_xbar = sigma/sqrt(n)` where `sigma` is the population stddev and `n` is the size of each sample. Since our population stddev (`sigma`) is unknown, we can use the full sample standard deviation `s` instead: `SE_xbar ~= s/sqrt(n)`
+
+`scipy.stats.norm.interval` can be used to calculate a confidence interval for a normal distribution,e.g., `scipy.stats.norm.interval(0.95, m, sd)` where `m` is mean-of-means (mean of distribution) and `sd` is standard error (std dev of means)
+
+They have a nice full example at the end of this lab if you need to refer back.
 
 ### Hypothesis Testing
 
+Define two mutually exclusive hypotheses `H_0` (the null hypothesis we wish to disprove) and `H_1` (the alternative hypothesis, the belief we want to find evidence to support).
+
+The terms come in fast and furious here so I'll just make the rest of the notes from the lab.
+
 ### Lab: Hypothesis Testing
 
+**SINGLE TAILED**
+
+Say you're trying to prove something, like the population mean (`mu`) is > 0. You can't do this from a single sample, but you start with a sample with mean `xbar`, which is greater than 0.
+
+Start with the null hypothesis `H_0 : mu <= 0` and the alternative hypothesis `H_1: mu > 0`
+
+To prove that `H_0` is probably false (you can't state with certainty, just probably), you attempt to prove that it's true first. In this case it would mean that the sampling distribution for the values would be a normal distribution with a mean of `0` (or less I guess). So from that normal distribution, how probable is it to get a sample with a high mean above 0? How improbable would it need to be for us to conclude that `H_0` is probably false?
+
+How many stddev's above the `H_0` mean of `0` is our sample mean `xbar`? Once we know that, we measure the AUC between that point onward to the right, which will give us the probability of observing a mean that is at least as high as our sample mean. This number of stddevs above is called our test statistic (`t-statistic`) and the AUC there the `p-value`.
+
+We then set a threshold `alpha` under which we consider we consider it too improbable under random chance alone that our sample mean was in this area. Most commonly it's set to 0.05 (5%).
+
+When the stddev of the pop is known, we call it a `z-test` because normal distribution often called a z-distribution and because of `z-zcores`. When the stddev of the pop is not known, it's referred to as a t-test and based on an adjusted version of a normal distribution called a Student's t distribution (where the distribution is flattened to allow for more sample variation depending on the sample size). 
+
+TIL:
+
+> Generally, with a sample size of 30 or more, a t-test is approximately equivalent to a t-test
+
+We've been talking about a Single Sample test (because we're comparing the mean of a single sample to the hypothesized pop mean) and it's one-tailed (because we want to know if it's on the right tail of the distribution).
+
+The formula for a one-tailed, single-sample t-test is `t=(xbar - mu) / (s / sqrt(n))` where `xbar` is the sample mean, `mu` is the pop mean, `s` is the stddev, and `n` is the sample size. The numerator is thought of as the _signal_ and the denominator as the _noise_. The t-statistic is essentially the ratio of signal-to-noise, and measures the number of standard errors between the `H_0` value and the observed sample mean. A large value tells you that your result/signal was much larger than you would typically expect by chance.
+
+`t, p = scipy.stats.ttest_1samp(sample, 0)` is a two-tailed test, so make sure you cut `p` in half if you're doing a one-tailed test.
+
+If `t * pop.std()` is greater than the right-sided confidence interval for a 90% confidence interval (90% because that leaves 10% or 0.1, and we're doing right-tailed, so 0.05 or 5%), then it's unlikely under random chance that our sample mean is greater than the `H_0` mean so we can safely reject he null hypothesis. You can alternately state that if after calculating `t, p` from `ttest_1samp()` as above (and cutting `p` in half) that `p < 0.05` then we can say the same thing (since the p value is the AUC past the t*pop.std() line and 0.05 is the AUC for critical value)
+
+**TWO TAILED**
+
+`H_0: mu = 0` and `H_1: mu != 0`
+
+When running `t,p=stats.ttest_1samp(sample,0)` this time you don't need to cut `p` in half because it's already been doubled for us in the function for a two-tailed test.
+
+This time they do a 95% confidence interval leaving 2.5% for each tail. We're still testing whether `p < 0.05` later, it's just that half of it is in one tail and half of its AUC is under the other.
+
+> You may note that doubling the p-value in a two-tailed test makes it harder to reject the null. This is true; we require more evidence because we are asking a more complicated question.
+
+**TWO SAMPLE**
+
+Let's say you want to compare two samples against each other, e.g., two samples of students, one sample had prior math study, other sample did not. You hypothesize that the grades will be higher for the students who had previously studied math.
+
+`H_0: mu_1 <= mu_2` and `H_1: mu_1 > mu_2`
+
+Apparently the formula for the t-statistic is a bit different but they don't elaborate.
+
+`t, p = stats.ttest_ind(sample1, sample2)`
+
+It's an "independent samples" t-test function. It's also assumed two-tailed so we use 90% confidence interval for our one-tailed hypothesis above, and we make sure to cut `p` in half too. If `p<alpha` (alpha=0.05, the critical value) then reject `H_0` and the kids with prior math probably have better scores
+
+I re-ran it with the standard deviation sent to `np.random.normal()` at 2.0 and the test failed. So he did pick specific data to support the test succeeding here. And I've showed that by increasing the stddev it was more likely that the higher average for math people was just due to random chance which makes intuitive sense. Cool.
+
+**PAIRED TESTS**
+
+In the previous two-sample test, the samples were independent, i.e., no relationship between the observations in the first sample and the observations in the second sample. Consider two samples where the first is grades of students who took a mid-term and the second is the same students but graded on their final exam. In this case it's more appropriate to compare the two test scores for each individual student than to compare average grade improvement.
+
+This is known as a paired-samples t-test or a dependent-samples t-test. It tests whether the changes tend to be in the positive or negative direction.
+
+`t, p = stats.ttest_rel(examSample, midtermSample)` is still-two-tailed, make sure to halve `p` and use 90% confidence interval later.
+
+This was one of the better labs in the course.
+
 ### Lesson Review
+
+Passed lesson review by looking up the binomial distribution PMF section and multiplying 5 choose 3 by (p^k)*((1-p)^(n-k)).
 
 ## Module Assessments
 
