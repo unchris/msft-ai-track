@@ -762,9 +762,63 @@ Wow he really breezed through this stuff. This needs more time spent on it, even
 
 ### Lab: Probability
 
+Bias makes one outcome more likely than another. E.g., an experiment on what the weather might be like in the summer, there's a bias toward sunny days as opposed to rainy or even snowy days.
 
+Probability trees come up out of nowhere drawn in ascii no less. nice.
+
+Mutually exclusive events. Example: what's the probability that a single coin flip can result in heads *and* tails? For mutually exclusive events, `P(A int B) = 0` and so `P(A U B) = P(A) + P(B)` (since the intersection is 0, you don't need to subtract it)
+
+Another example is, what's the chance of rolling a 6 and an odd number in the same dice roll? `P(A U B)=0` again.
+
+`scipy.special.comb` can be used to calculate `n choose k`. 
+
+OK so here they explain the two different formulas for `P(x=k)` much better.
+
+For the binomial variables/distributions you can use the form `P(x=k) = (n choose k)` but when there is _bias_ in the results (i.e., the probability of event being tested for failure and success is not equal) then you have to account for the bias.
+
+In this case, it's not as simple as saying n possibilities, choose k of them. In this case you have to calculate the probability across your experiment of the k successes and the n-k failures, and then multiply it by `(n choose k)` which is to say, multiply it by the number of ways k successes and n-k failures can occur. 
+
+So first, the probability of k successes and n-k failures is `p^k * ((1 - p)^(n-k))` where `p` is the probability of success. So, e.g., in this case let's say the probability of success is 0.25, and you want to know the chance of 3 successes out of 5 events, you would calculate (0.25^3) * (0.75^2), or about 0.088. 
+
+Second, you multiply that by all the possible ways you can get 3 successes and 2 failures, which is (n choose k) or (5 choose 3) or 5.  so the total probability `P(x=k) = 5 * 0.088 = 0.01375`
+
+This full formula is called the General Binomial Probability Formula, and it is used to calculate the probability Mass Function (PMF). We can use `scipy.stats.binom.pmf`
+
+The `scipy.stats.binom.pmf` function encapsulates the general binomial probability formula, and you can use it to calculate the probability of a random variable having a specific value `k` (not same as `k` above!) for a given number of experiments `n` where the event being tested has a given probability `p`. They give some example code that I copied here:
+
+```python
+from scipy.stats import binom
+from matplotlib import pyplot as plt
+import numpy as np
+
+n = 5
+p = 0.25
+x = np.array(range(0, n+1))
+
+prob = np.array([binom.pmf(k, n, p) for k in x])
+
+# Set up the graph
+plt.xlabel('x')
+plt.ylabel('Probability')
+plt.bar(x, prob)
+plt.show()
+```
+
+They note that if you increase `n` it will start to look more and more like a normal distribution (try `n=50`). I also tested changing `p` to `0.5` which causes the distribution to be centred wherethe median value of `x` is. When `p=0.25` it is pushed left and when `p=0.75`, it's pushed right.
+
+Note: Normal Distribution applies to continuous variables, while the Binomial Distribution applies to discrete variables. However because of the Central Limit Theorum, the number of observations being large enough can make the distribution of binomial variables behave like a normal distribution.
+
+You can calculate the mean of a binomial distribution `mu=n*p`
+
+You can calculate variance with `sigma^2 = np(1-p)`
+
+You can calculate stddev with the usual square root `sigma = sqrt(np(1-p))`
+
+These can be accomplished with `scipy.stats.binom.mean(n,p)`, `scipy.stats.binom.var(n,p)`, and `scipy.stats.binom.std(n,p)`
 
 ### Sample and Sampling Distributions
+
+
 
 ### Confidence Intervals
 
