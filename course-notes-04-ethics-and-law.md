@@ -127,5 +127,169 @@ Martin, Kirsten. “Ethical Issues in the Big Data Industry,” MIS Quarterly Ex
 
 Schwab, Katharine. “Data Can Lie,” https://www.fastcodesign.com/3067315/data-can-lie-heres-a-guide-to-calling-it-out
 
+## Lab
 
+### Assignment
 
+nothing
+
+### IRAC Application
+
+From a MS Case: Does the Stored Communication Act allow the US Government to obtain customer information stored in e-mail from computer service providers like Microsoft when the information is stored on servers and data centers that are outside of the physical territory of the United States.
+
+Issue: Can the law apply outside the US?
+
+Rules:
+1. Stored Communication Act is inside Electronic Comms Privacy Act.
+2. Presumption against extra-territorial activity of law
+3. Morrison Decision recently was against extraterritorial application of US law
+
+Application:
+Though the SCA allows seizing data for surveillance and law enforcement, it cannot be used extra-territorially.
+
+Conclusion: court said section 2703 of the SCA was not intended to extend beyond the United States
+
+### Data Set Instructions
+
+COMPAS - COrrectional Offender Management Profiling for Alternative Sanctions. This algorithm assesses a criminal defendant's likelihood to re-offend.
+
+> You will be redirected to GitHub, a third party website whose privacy practices differ from Microsoft's. If you provide personal data, your data is governed by their privacy statements.
+
+Funny since MS owns GitHub now and this notice is being printed on edx.org which is NOT owned by MS as far as I know...
+
+They say to download a zip file but I'd rather clone it
+
+### Explore the Compas Data Set
+
+This video is half an hour => set playspeed to warp 9
+
+excel correlation function tells you how correllated two columns are. if it's 1.0 it means the values are exactly the same. he does this to find out if he has useless data. he deletes the duplicate. neat
+
+he's sayying when you get a spreadsheet of features like this, usually you get a seprate document called a "data dictionary" that explains what all the columns are because e.g. `v_type` means nothing to you
+
+> So let's go to Bing, our trusty search engine
+
+_sigh_
+
+He looks up the definition of recidivism to know how long into the future they looked and what kinds of crimes counted (e.g, parking tickets don't count). COMPAS was made by Northpointe.
+
+He's wondering whether any of the `features` is unethical to include, but frankly the use of this COMPAS tool _at all_ seems unethical.
+
+He's going to use Pivot tables to see relationships between data. This seems dumb considering they spent other courses talking up using Jupyter for this.
+
+uses race as row, decile_score as column and value. which tells you "by race what are the recidivism rates like". find sa correlation between african americans being more suspected of recidivism than caucasians.
+
+makes another pivot table 'score_text' is a row (low/med/high), value set to count of priors, and then asks for the average instead of sum. finds a correlation between prior arrests and high recidivism.
+
+### Exploration Prompt
+
+This is a sheet of questions to use against the video just watched. The guy already went through it though in the video so I guess it's just to give you a hard-copy to refer to.
+
+### Validation
+
+The validation question isn't loading for me
+
+### Module 01 Assessment
+
+Unavailable due to Auditing
+
+# Data, Individuals, and Society
+
+## Data Bias and Identity
+
+### Data, Individuals, and Society
+
+Let's not allow data science, data analytics, and AI to take our right away to define ourselves.
+
+### Bias in Data Processing - Part 1
+
+Conscious Bias: one you're aware of
+
+Unconscious Bias: one you're not aware of, but still affects your decision-making
+
+We are worried about Machine Subconcious Bias.
+
+Ways Bias Enter Data
+1. Data Input is Biased
+
+### Bias in Data Processing - Part 2
+
+Ways Bias Enter Data
+1. Data Input is Biased
+2. Use of Irrelevant Data (bias in Feature Selection)
+
+### Legal Concerns for Equality
+
+- No transparency in data collection and use.
+- No clarity about who is included and excluded from collection
+  - Interesting thought: a person who lives "off-grid" so-to-speak becaues they can't afford, e.g., personal internet, cell phone, netflix, GPS, and so on, has a lower data footprint, and thus may experience 1. tangible economic detriment because businesses will undervalue their preferences, and 2. possibly exclusion from civil and political life because they're just not counted or considered
+  - The Equal Protection Doctrine in the US protects against things like race, gender, ethnicity, but does not protect on the basis of e.g., economic worth or how often connect to Internet AND it only protects from actions taken by GOV, not private corps
+
+### Bias and Legal Challenges
+
+two challenges:
+1. data inputs to algorithms
+2. design of algorithms themselves
+
+for challenge one,
+- if the data input to a "fastest route" calculator only gets its data from smartphones, then it may cover "poor areas" of town worse
+- if it only includes data about roads, but not bike routes or public transport, then it will exclude people who don't own a car
+
+for challenge two I think a later video will tackle it
+
+IP rights are in tension with individual rights to be free of discrimination
+
+### Consumers and Policy
+
+As many as 11% of consumers don't have enough history to get an algorithm-derived credit score. WOW.
+
+Data analytics can improve this, but that doesn't protect for discrimination from bias.
+
+Fair Credit Reporting Act and Equal Credit Opportunity Act may help here
+
+### Employment and Policy
+
+Hiring Practices use algorithms.
+
+Civil Rights Act might help, but because of transparency problem, it's hard for anyone to realize discrimination might have occurred.
+
+### Education and Policy
+
+Improving student learning, retention and graduation. How?
+
+Big Data could help reduce or produce discrimination.
+
+Some universities already using data points to predict pathways to success.
+
+Family Educational Rights and Privacy Act (FERPA) helps here.
+
+A concern that students maintain autonomy and the right to self-determine a path of study consistent with their wants regardless of algorithmic diagnostic or predictions. Could be called "Right to Autonomy Privacy" or "Right to Identity Privacy".
+
+### Policing and Policy
+
+Criminal Justice and Predictive Policing
+
+identify crime hot spots
+
+- interesting: data from body cameras removes some subjectivity in police reporting
+
+### Best Practices to Remove Bias
+
+I'm short-handig this, but it comes from 2016 Obama executive report on Big Data and Bias
+
+1. support research into mitigating algorithm discrimination, build systems with fairness, etc
+2. encourage market to design best systems including transparency and accountability, and appeals processes
+3. promote auditing and external testing to ensure fairness
+4. broaden participation in computer science and data science including opportunities to improve fluency for everyone
+
+### Descriptive Analytics and Identity
+
+3:40pm
+
+### Further Reading
+
+# Data Ethics and Law in Business
+
+# Artificial Intelligence and Future Opportunities
+
+# Final Evaluation
