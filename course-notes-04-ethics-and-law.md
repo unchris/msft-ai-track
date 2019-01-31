@@ -284,7 +284,66 @@ I'm short-handig this, but it comes from 2016 Obama executive report on Big Data
 
 ### Descriptive Analytics and Identity
 
-3:40pm
+Descriptive and Predictive analytics are similar in that they both need aggregated data.
+
+Predictive analytics tries to forecast future data
+
+Descriptive analytics is used to describe the present or past
+
+The problem of just saying nobody should have access to my data
+
+"at least if they're going to find out a lot about me, I hope whatever they conclude is accurate"
+
+this two-direction anxiety is analogized by Kate Crawford
+
+> "We are worried that our data is like a harsh fluorescent light that shows both too much of us and not enough at the very same time, and therefore displays a false and unflattering picture of us"
+
+Is there some part of your digital profile that's wrongly characterizing you and putting you on a list somewhere?
+
+We need a chance to challenge these characterizations (appeal)
+
+The providers argue that their algorithms might tell you things about you that you don't even realize.
+
+No laws governing this space.
+
+### Further Reading
+
+Barocas, Solon, and Andrew Selbst. “Big Data's Disparate Impact,” California Law Review, 2016, Vol. 104:671
+
+“Digital records could expose intimate details and personality traits of millions.” http://www.cam.ac.uk/research/news/digital-records-could-expose-intimate-details-and-personality-traits-of-millions
+
+Pasquale. Frank. The Black Box Society: The Secret Algorithms That Control Money and Information. Harvard University Press, Cambridge Massachusetts: 2015 ed.
+
+## Data Privacy and Power
+
+### Privacy, Privilege or Right
+
+- Decisional Privacy
+  - right to be let alone wrt how we live our lives, who we partner with, raise children, medical treatments we accept/reject
+  - most affected by gov actions that attempt to restrict full expression of privacy by citizens
+  - e.g. in the US, attempts to restrict reproductive freedom
+- Informational Privacy
+  - the right to be let alone wrt information or data that reveals knowledge about us
+  - social sec numbers, race ,gender, religion, health data, fitness level, genetic data etc
+  - outside of constitutional protection against gov actions against privacy, most privacy law is buried by sector in US law
+  - i.e., there's no overarching privacy rule
+  - separate laws for protecting health data, financial data, student data, etc
+  - the laws are very specific and they get stretched in their application
+  - there's also common law that protects privacy in an area called "torts" which protect individuals from wrongs committed by another that caused physical financial and emotional harm
+
+there seems to be a prevailing feeling that perhaps americans think of privacy as a privilege than a right, since they so freely give away info
+
+### Privacy Law and Analytics
+
+
+
+### Negligence Law and Analytics
+
+### Power Imbalances
+
+### Personal Data and Privacy
+
+### Masking Personal Data
 
 ### Further Reading
 
