@@ -544,14 +544,202 @@ Gee, Kelsey. “In Unilever's Radical Hiring Experiment, Resumes are Out, Algori
 
 ### The Evolution of Privacy and Technology
 
+Been evolving since laws in US and Europe in 70s
+
+Five Principles from the 70s
+- Access to Stored Records
+- Transparency of Process
+- Control Options for Individuals
+- Security
+- ?? what's the 5th?
+
+In the 90s there was another wave of legislation
+
+Recently the GDPR and proposed Privacy Bill of Rights in the US
+
+Push for Privacy by Design
+
 ### Data Privacy and Security Best Practices
+
+Suggested best practices based on FTC's enforcement actions (they're sharing the highlights but you can go get a reprt)
+
+1. Know Your Data - The FTC takes an expansive view as to the types of data it considers personal
+2. Don't Avoid a 'Privacy By Design' Approach - build into your technology consumer privacy protections.
+3. Do consider whether and how users should be provided notice and choice
+4. Do have a privacy policy covering the IoT device and ensure it is accurate. No one US law for this but the FTC is monitoring it and some states have laws already (e.g. Cali)
+5. Don't forget to update all representations to match your privacy practices
+11. Do apply extra scrutiny when it comes to collecting sensitive data
+15. Don't forget to monitor for new development sat the FTC
 
 ### GDPR
 
+The EU's previous one was in 1994.
+
+The GDPR allows for higher fines to actually cause changes
+
+The EU really does not trust other jurisdictions to regulate data as protectively as the EU does.
+
+GDPR
+- Applies to more businesses than the 1994 privacy directive
+- Applies extraterritorially too, as long as the company is processing data from EU citizens
+- Definition of personal data has been expanded, including name, location, online identifiers and genetic info
+- Non-compliance has severe penalties
+- data controllers must notify supervisory authorities within 72 hours of a data breach
+- new record-keeping requirements and ability to produce records on demand
+- consent given by data subjects must be clear, freely given informed and specific and can be withdrawn at any time without consequences
+- since GDPR is a regulation, there is only one version across the EU, whereas the privacy directive of 1994 had different implementations
+
+questions you should ask:
+1. what personal data does my company collect and store and how is it used?
+2. do our activities fall within scope of gdpr?
+3. do we meet the definition of a data processor or controller?
+4. do we have a high level of responsibility for data security?
+5. have we developed data breach response plan?
+
+GDPR calls it Data Protection by Design/Default, believed to become a legal requirement.
+
 ### GDPR, Big Data, and AI
+
+data protection principles that are threatened by use of Big Data and AI
+1. big data analytics must be fair
+2. you need permission to process
+3. purpose limitation - don't use data inconsistent with what you tell users
+4. holding onto data - minimize how much data you collect
+5. accuracy
+6. individual rights and access to data and ability to correct it
+7. security measures and risk
+8. accountability - erroneous algorithmic decisions based on biased profiling throw up issues here
+9. controllers and processes - data controllers and data processors are different, make sure you know the definition
 
 ### Further Reading
 
+“Are you ready for the EU's General Data Protection Regulation (GDPR)? Our two new tools can help you find out” Microsoft Corporate Blog. https://blogs.microsoft.com/on-the-issues/2017/07/17/ready-eus-general-data-protection-regulation-gdpr-two-new-tools-can-help-find/
+
+Smith, Brad. “Keynote address, APP Global Privacy Summit 2016.” https://www.youtube.com/watch?v=BnxlSObym88
+
+## Lab
+
+### Assignment
+
+nothing
+
+### IRAC Application 3
+
+Company A uses smartphone camera to analyze pupil for concussion symptoms. You've been hired at Company A to voice your concerns about any legal issues.
+
+Issue - is there an issue of an invasion of privacy as a result of collecting this personal medical data?
+
+Rule - HIPAA protects health data. HIPAA applies when an org plays a certain role in healthcare provision to patients. then, HIPAA applies also if the organization handles Protected Health Information (PHI). So, is it a covered entity or associate and handles PHI?
+
+Application - no case law to look up here because it's so new. Who are the app's customers? Who directs use of the health data? does company A have formal relationship with covered entities? will a covered entity require the use of the app?
+
+Conclusion - since the app is probably not working with a doctor's office or being one, and since the consumers have direct access to the data means HIPAA probably doesn't cover this, at least right now. New law may change this.
+
+### The Ethics and Variables of Recidivism
+
+Problem 1.
+
+Hypothetical study shows human judges over-predict recidivism 30% of the time. A new algorithm over-predicts recidivism only 12.5% of the time
+
+Is the algorithm better?
+
+Further hypothetical study shows that Caucasian defendants went from 30% to 10%, but african-americans went 30% to 15%.
+
+Is it still better? You have reduced the overall amount of unnecessary time in jail... BUT, the color of someone's skin is now MORE likely to determine longer time in jail.
+
+Accuracy is important but it can't be traded for social justice.
+
+Problem 2.
+
+Why do we punish people?
+1. Theory: Retributivism
+  - justified and only if it is retribution for a past crime
+  - problem: if the algorithm makes any mistakes, you have punished someone for an action that he had not committed (and never would have)
+2. Theory: Rehabilitationism
+  - Punishment is justified iff it is likely to rehab a criminal
+  - Problem: the algorithm seem to be concerned with accurate predictions, not rehab
+3. Theory: Consequentialism
+  - punishment justified iff it brings about good consequences for society as a whole
+  - thought experiment: what if we found an old, harmless, former serial killer? he can't re-offend because too frail.should they be punished for being a serial killer? the consequences will only increase suffering in the world since they can't/won't re-offend
+  3a. Deterrence
+    - achieves good social consequences by discouraging people from committing crime
+    - how could an algorithm take this method into account?
+  3b. Incapacitation
+    - Achieves good social consequences by keeping criminals away from society
+    - this seems to be the only method under consideration by the algorithm
+
+Problem 3 - unfair proxies
+
+- what if a variable that is a proxy for recidivism is something the person can't change about themselves? like race. that seems unethical - how could they change that?
+- it has to be strongly correlated to recidivism but has to have new information, it can't just be a proxy for race, e.g., zip code
+
+### Predictive Variables Instructions
+
+Lab is done in an Excel file with Pivot tables so nothing to share here other than for step 5 you are basically just applying Problem 3 from the previous section to the COMPAS data set to see if any variables are strongly or weakly predictive and if any of them would be unethical to use as a proxy.
+
+### Validation
+
+not there again
+
+### Module 03 Assessment
+
+unavailable due to auditing
+
 # Artificial Intelligence and Future Opportunities
 
+## AI and Design
+
+### AI and Future Opportunities
+
+### From Analytics to AI
+
+### AI Design Principles
+
+### Example - Autonomous Cars
+
+### Values Like Ours
+
+### Further Reading
+
+## XAI
+
+### Why XAI
+
+### XAI - The Issues
+
+### XAI - Complex Algorithms
+
+### XAI or GAI
+
+### Further Reading
+
+## Lab
+
+### Assignment
+
+### Algorithms and Accountability
+
+### IRAC Case Study
+
+### IRAC Suggested Answers
+
+### Predicting Recidivism without Using Protected Classes
+
+### Validation
+
+### Module 04 Assessment
+
 # Final Evaluation
+
+## Final Evaluation
+
+### Module 05 Assessment
+
+## Wrap Up
+
+### Wrap Up
+
+## Post-Course Survey
+
+### Post-course Survey
+
