@@ -335,19 +335,222 @@ there seems to be a prevailing feeling that perhaps americans think of privacy a
 
 ### Privacy Law and Analytics
 
-
+Statutory law comes up lots in Business
+- HIPAA, GINA, FERPA, ECPA
+Common Law - Torts - Intentional torts in privacy
+- Intrusion into Seclusion
+  - e.g., person peering into a women's dressing room
+  - is misuse of people's data like fitbit an intrusion into seclusion?
+- Appropriation of Name or Likeness
+  - protects our identity, name, picture, etc
+  - somebody taking a picture of a celebrity and selling it on a t-shirt
+  - commercial advantage has to be established and their has to be an offensive use
+- Public Disclosure of Private Facts
+  - like disclosing someone has an infectious disease
+  -
+- False Light
+  - it has to be publicly but a misalignment of who we are
+  - taking a picture and putting them in a headline in a newspaper that says something that is false
+  - can data falsely portray us? of course because of bias and bad data input
 
 ### Negligence Law and Analytics
 
+Negligince law is state law, is common-law and is relevant to all kinds of behaviour personal and business.
+
+1. duty
+  - defender has a duty to act as a reasonable person under the circumstances
+  - e.g., car driver must drive reasonably given conditions
+2. breach
+  - we breach that duty when we fail to act carefully
+  - e.g, go way over the speed limit on a stormy day and cause an accident
+3. causation
+  - link between breach and the damages that are caused.
+4. damages
+  - physical emotional and/or financial damages
+  - negligence is tort law, which protects us from these harms
+
+This can include
+- negligent product design, think about autonomous cars.
+- negligent hiring
+- negligent distribution - e.g., distributing guns in a less regulated area knowing they could end up in the black market
+- negligent data collection or management?
+  - there can be a claim that the data broker or the data user is collecting info in a way that's not careful enough
+  - big data breaches involve negligence
+
 ### Power Imbalances
+
+People > Government > Business is the ideal state but we know it's not like that all the time or at all
+
+power in this sense means final authority, not complete control
+
+Knowledge is power => Data is power
+
+government has a ton of data on citizens, but not vice-versa, which is flipping the power structure here
+
+government has to often ask or take the data from businesses, so the power structure is kind of reversing with Big Data
 
 ### Personal Data and Privacy
 
+I copied this directly:
+
+> Some questions to ask yourself when you find or have PII in your data set:
+> - What are your company's needs around using these PII values?
+> - Who needs access to this data?
+> - Can you lock down access to those who need it, or is that not possible with your system?
+
 ### Masking Personal Data
+
+Techniques to mask your personal data
+
+- substitution:
+  - e.g., putting 1234-5678-9012-3456 in for a credit card number
+  - there's a risk that the substituted value could mean something too, or you lose the original reason for storing the value
+- shuffling
+  - e.g., taking pairs like (Sarah, 1), (Bill, 493), and (Sue, 661) then shuffling it around to (Sarah, 661), (Bill, 1), (Sue, 493)
+  - danger is that the real data is still there and could be potentially re-associated
+- number and date variance
+  - essentially rot13 but even say with dates by shifting them forward or backward by some amount of time
+  - it's still a proper date/number but no longer accurate
+- encryption
+- nulling out or deletion
+  - you lose data integrity when you do this but it does wipe the data out
+- differential privacy
+  - using statistical methods to incorporate noise into all the records in a data set
+  - they call out to the _Further Reading_ section
 
 ### Further Reading
 
+“Big Data: A Tool for Inclusion or Exclusion? Understanding the Issues” (FTC Report January 2016) U.S. Federal Trade Commission. https://www.ftc.gov/system/files/documents/reports/big-data-tool-inclusion-or-exclusion-understanding-issues/160106big-data-rpt.pdf
+
+“Big Data: A Report on Algorithmic Systems, Opportunity, and Civil Rights” (Executive Office of the President May 2016) U.S. Executive Office. https://obamawhitehouse.archives.gov/sites/default/files/microsites/ostp/2016_0504_data_discrimination.pdf
+
+More on encryption: https://www.howtogeek.com/howto/33949/htg-explains-what-is-encryption-and-how-does-it-work/
+
+More on differential privacy: https://privacytools.seas.harvard.edu/differential-privacy
+
+## Lab
+
+### Assignment
+
+blank
+
+### IRAC Application
+
+4 minute video about applying IRAC again
+
+facebook sponsored stories created ads with members' photos without their knowledge and consent
+
+issue: did FB violate right to privacy using their photos like this?
+rule: appropriation of name or likeness
+
+application: mental distress of the person whose identity was used, or damage to their identity
+
+My: conclusion: they violated their right ot privacy by appropriating name or likeness
+
+Facebook settled out of court so we don't know for sure
+
+### Personal Data Exercise
+
+they ask you to try some of the data masking ideas from the _Masking Personal Data_ section after identifying which data might be considered personal in the COMPAS data set
+
+### Validation
+
+don't see the validation question
+
+### Module 02 Assessment
+
+n/a becaues auditing
+
 # Data Ethics and Law in Business
+
+## Business and Ethical Data Use
+
+### Data Ethics and Law in Business
+
+how is business regulated in data analytics and AI
+
+european law as well
+
+how will it be interpreted with new technology?
+
+### Handling Consumer Data
+
+FTC laws that help and two case examples
+
+- Fair Credit Reporting Act
+  - explains that Consumer Reporting Agencies have a specific duty to its clients
+
+FTC decided that Spokeo became a CRA and subject to the FCRA rules, which they weren't following and fined $800k. This, even though Spokeo claimed on their website that they were not a CRA and users should not use their site for credit eligibility purposes, per se.
+
+Organizations and participants in data analytics and AI should not assume that existing law does not regulate them.
+
+Section 5 of the FTC to take enforcement actions for violations of consumer privacy rights.
+- "unfair or deceptive acts or practices in or affecting commerce are unlawful"
+- This affects companies that fail to secure, or to for sharing or selling data analytics products to customers who may use that data for fraudulent purposes
+- TrendNet got in trouble with home security cameras that broadcast on the internet. Hackers compromised live feeds of people's homes and FTC brought action against TrendNet for not securing them
+
+Recommendation: Read page 24 of 2016 FTC Report _Big Data - A Tool for Inclusion or Exclusion?_ which will help you road map legal compliance for customer concerns in the United States.
+
+### Handling Employee Data
+
+Main US Federal Laws for Employee Protection
+
+1. Title VII of the Civil Rights Act of 1964
+2. Americans with Disabilities Act (ADA)
+3. Age Discrimination in Employment Act (ADEA)
+4. Genetic Information Nondiscrimination Act (GINA)
+
+Protected classes under Title VII
+- race
+- ethnicity
+- national origin
+- gender
+- religion
+
+Theories of Liability for Violations of Equal Opportunity Laws
+- Disparate Treatment: an employee is treated differently based on a protected characteristic
+- Disparate Impact: when employer's policies are facially neutral, but disproportionately impact a protected class. does not count if the policy or practice furthers a legitimate business need and cannot reasonably be achieved by means that have less disparate an impact on that class
+  - (me: presumably this would be something like, firefighters having requirements to drag a human body X meters, which might disproportionately be more difficult for women? - they bring something like this up in the video too hah! or a requirement to speak english when maybe you're ESL from another country?)
+  - this unintentional discrimination happens more often in analytics and AI
+
+### Ethics in Hiring with Big Data
+
+People Analytics / HR Analytics
+- working on finding algorithms that don't dicsriminate in hiring, but still find ideal employee
+- bias is still a problem
+- can they find data that is a proxy for how good you are? instead of using employment history, which may not be fair data?
+- what if an algorithm uses a six month employment gap as a proxy for something? we know it could be irrelevant, but does the algorithm know? transparency matters here
+
+### Digital Market Manipulation
+
+plenty of neat examples, here's two:
+- makeup companies advertising the most on Mondays because women report feeling most unattractive on Monday morning.
+- putting really expensive TVs on the shelf to make the one you're buying seem comparatively a good deal
+
+Big data allows businesses to combine personalization and systematization.
+- an example of this is when you buy a book and the seller recommends similar books
+- previously personalization and systematization were typically separated on e.g., TV ads (systematization) or in a car dealership (personalization)
+- this can be a win-win like with the books, but what if big data learns all about you and knows how to market tempting products to you when you're vulnerable?
+
+### Further Reading
+
+Calo, Ryan. “Digital Market Manipulation,” The George Washington Law Review, August 2014 Vol. 82 No. 4
+
+De Romree, Henri, Bruce Fecheyr-Lippens, and Bill Schaninger. “People Analytics Reveals Three Things HR May Be Getting Wrong.” http://www.mckinsey.com/business-functions/organization/our-insights/people-analytics-reveals-three-things-hr-may-be-getting-wrong
+
+Gee, Kelsey. “In Unilever's Radical Hiring Experiment, Resumes are Out, Algorithms are In,” Wall Street Journal. https://www.wsj.com/articles/in-unilevers-radical-hiring-experiment-resumes-are-out-algorithms-are-in-1498478400
+
+## Business and Data Privacy
+
+### The Evolution of Privacy and Technology
+
+### Data Privacy and Security Best Practices
+
+### GDPR
+
+### GDPR, Big Data, and AI
+
+### Further Reading
 
 # Artificial Intelligence and Future Opportunities
 
