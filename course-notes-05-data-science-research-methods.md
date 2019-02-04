@@ -146,35 +146,148 @@ not available
 
 ### Samples vs Populations
 
+samples are error-prone guesses. we almost never have population data in data science
 
+problem is Sampling Error.
+- sample may not be representative.
+- the large the sample, the more trustworthy it is
+
+Standard Error lets you know how trustworthy your sample is
 
 ### Null Hypothesis
 
+A lot of this is repeating stuff from the Essential Math course. I'll only take notes that add to what is already learned.
+
 ### Discrediting the Null Hypothesis - P Values
 
+large p value - result easily produced by random chance
+small p value - not easily produced by random chance
+
+"significant", but chance has not been disproved!
+
 ### Discrediting the Null Hypothesis - Confidence Intervals
+
+Confidence interval can also tell you a range for where the true value is. larger sample sizes will give you a better interval too
 
 ## Power for Sample Size Planning
 
 ### Power Part 1
 
+How do you know you have a big enough sample?
+
+Power/Statistical Power: % of the time an effect will be detected
+
+Power depends on
+  - effect size (bigger effect is easier to detect)
+  - sample size (bigger sample has more power)
+
 ### Power Part 2
 
+Effect Size
+
+Cohen's d (difference)
+
+Numbers here in standard deviations. Jay Cohen (statistician) came up with these ranges:
+
+* 0-0.2 = trivial
+* 0.2 - 0.5 = small
+* 0.5 - 0.8 = medium
+* > 0.8 = large
+
+r-value (correlation coefficient) is another way to measure.
+
+you can convert between `r` and `d`
+
+```python
+r = d/sqrt(d**2 + 4)
+
+d = (2*r)/sqrt(1 - r**2)
+```
+
+Basically this video is about making sure you have a large enough sample based on your effect size.
+
 ### Sample Size Planning
+
+effect size to sample size is not a linear relationship
+
+he shows a power chart which shows you several curves showing you x axis sample size and y axis power. each curve represents different Cohen's d-values.
+
+Need samples > 400-500 for smaller effects
+
+When comparing groups, size is per group
+
+Better to just use the power calculation tools available in statistical packages.
 
 ## Research Practices
 
 ### False Positives - False Negatives
 
-### Questionable Research Practices
+What happens when you have weak Power?
+
+False Positive is a Type 1 Error
+- Find effect when absent.
+- 5% of the time with 95% power
+
+False Negative is a Type 2 Error
+- Find no effect/relationship when actually present
+- 20% of time when actually present with 80% power
+
+***Note: This video reminds me of the Replicability crisis in several fields right now.***
+
+### Questionable Research Practices (QRPs)
+
+Filtering for Significance
+- what: selecting only `p < 0.05` results to share
+- why it's bad: context of all results makes false positives clear
+
+P-hacking
+- what: trying many analyses, data subsets, etc to get `p < 0.5`
+- why it's bad: guaranteed to find false positives
+- really common when someone is motivated to find a significant result
+
+HARKing
+- what: hypothesizing after results are known
+- why it's bad: overfitting. sample results are estimates only
+
+Optional Stopping
+- what: stopping your test during data collection when `p < 0.5`
+- why it's bad: false positives guaranteed
+- HUGE no-no. some people keep checking the data at every point coming in hoping for p<0.5.  BAD
 
 ## Knowledge Check
 
 ### Knowledge Check
 
+Unavailable
+
 ## Lab
 
 ### Module 2 Lab
+
+Five labs for module 2
+
+- Sampling
+- P Values
+- CIs
+- Power (part 1)
+- Power (part 2)
+
+I copied this verbatim from the P Values lab because even the guy's slides went against some of this advice
+
+> There is a lot of confusion about *p*-values, so let's review:
+
+> -   *p*-values represent how often you could get a result as big as you did *if the null were true*
+> -   *p*-values therefore represent how easy/hard it would be to get a result by chance
+> -   *p*-values do **not** tell you the probability that the result is due to chance; only the probability of seeing *your result* if the null were true
+> -   If the *p*-value for a result is small, it would be rare to get that result by chance (i.e., if the null were true)
+> -   If the *p*-value for a result is large, it would be common to get that result by chance (i.e., if the null were true)
+> -   Conclusion: the *p*-value is a measure of "incompatibility" between your result and the null. If the *p*-value is small, one of the two (the data, or the null) is likely wrong. We opt to trust our data and reject the null.
+
+> To be clear: the *p*-value is a backwards way of testing the null hypothesis. We would love to know the *probability* that the null hypothesis is true--the probability that the results *are* due to chance--but we cannot know that. You will often hear the *p*-value described this way, but that is **very wrong**.
+
+> So, to repeat, the *p-value states the probability of getting **your result** if the null is true*. It is essentially a statement of incompatibility between your data and the null. A small *p*-value (typically, less than 5% or "&lt; . 05") tells you that the data and null are highly incompatible. Since you did in fact observe the data, you conclude the null hypothesis is false. This is the only use for the *p*-value.
+
+In the lab about Confidence Intervals it needs access to a file I cloned outside of the docker container.
 
 ### Lab Check
 
