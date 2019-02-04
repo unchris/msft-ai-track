@@ -691,43 +691,166 @@ unavailable due to auditing
 
 ### AI and Future Opportunities
 
+intro to course
+
 ### From Analytics to AI
+
+ranking terms on x axis complexity and y axis scale
+
+- Analytics / Business intelligence is low complexity, small scale
+- Big data is slightly more complex, much bigger scale
+- Data Science instead is much more complex, but slightly more scale than Anal/BI
+- AI is more complex and bigger scale.
+
+He separates AI as being predictive modelling, deep learning techniques for human-like behaviour including Computer Vision and Natural Language Comprehension. This is funny to me because that's a reductive view of AI but ok.
+
+Whereas, he says Analytics/BI, Big Data, and Data Science are more just Analysis, Visualization, storage/processing, and basic predictive modelling (regression, classification, and clustering)
 
 ### AI Design Principles
 
+These principles come from Microsoft's work but they want it to extend out.
+
+1. AI must be designed to assist humanity & maximize efficiencies without destroying the dignity of people (naturally, this slide has a screen grab from Halo with Master Chief staring at a hologram of Cortana...)
+  - augment humans
+  - empower humans, not replace
+  - enable improvement of people, gov, and society
+  - industry/domain/purpose/geolocation/regulation
+2. AI must be transparent, and have algorithmic accountability, so humans can undo unintended harm
+  - AI should be fair, inclusive, and should not discriminate against any particular group of individuals or valid outcomes
+  - bias/cleaning-extraction-learning algorithms
+  - choice of target variable, class labels, and performance metric
+3. AI must guard against bias
+  - AI should pair _innovation_ with _trust_
+  - trust that you strive to be _fair_ and benefit people
+  - trust that problems will be corrected, that harm will not remain hidden
+  - minimize risk of harm and distrust by being transparent
+  - be able to identify/correct harmful outcomes
+  - should respect context: don't read email to send us ads
+  - is my performance metric biased? is this the right target, feature selection?
+  - is there bias in my input/output?
+4. AI must be designed for intelligent Privacy
+  - Ai must _respect customer wishes_ on privacy. _Do Not Leak_. Leave people alone
+  - protect personal data and identifying info
+  - do not surprise with unexpected uses of data. comply with policy/regulation
+  - minimize collection, use only what needed. don't contact users against wishes
+  - GDPR focuses on personal data, not PII => do you know the difference?
+5. AI must be secure
+  - AI must ensure _Confidentiality, Integrity & Availability_ of personal data.
+  - System is free of known vulns. provides controls for _protection, detection & response_ to malicious behaviour
+  - different than regular security
+  - I stopped writing down notes here becaues I think this comes from a presentation I can download later
+
 ### Example - Autonomous Cars
+
+- cybersecurity issues
+  - hackers to take control of a semi- or fully autonomous car
+  - self-driving cars will require smart roads for operation, smart cities technology
+  - DARPA funded research hacked a car a Wired driver was driving (see the magazine article)
+- liability issues
+  - shifting the liability between the driver and the autonomous car
+  - who is responsible for the harm caused? driver? car?
+  - tesla autopilot vehicle crashed and killed the driver. who is at fault? there could be negligence law, like negligent instruction (or even defective instruction) saying Tesla did not properly inform drivers they needed to pay way more attention
 
 ### Values Like Ours
 
+1. AI will exceed human intelligence
+2. Humans will eventually lose full control
+
+How do we design the future we want, where super intelligence doesn't just wipe us out?
+
+Value Loading (teaching lessons in values to AI)
+1. Must be General, not directed to specific situations
+2. Must first have a basic concern with human well-being
+
+Ethics can only be taught to someone who already values human well-being
+
 ### Further Reading
+
+Bostrom, Nick. Superintelligence: Paths, Dangers, Strategies. Oxford University Press; Oxford, 2014 ed.
+
+Satya Nadella's six design principles for AI: https://www.theverge.com/2016/6/29/12057516/satya-nadella-ai-robot-laws
+
+Information Commissioner's Office. “Big data, artificial intelligence, machine learning and data protection.” https://ico.org.uk/media/for-organisations/documents/2013559/big-data-ai-ml-and-data-protection.pdf
 
 ## XAI
 
 ### Why XAI
 
+eXplainable AI. - "Machine learning systems that have the ability to explain their rationale, characterize their strengths and weaknesses, and convey an understanding of how they will behave in the future" (according to DARPA)
+
+GDPR attempts to enshrine the "right to an explanation". e.g., why was I denied credit?
+
 ### XAI - The Issues
+
+1. Tradeoff between explainability and performance
+2. To whom are we expecting it to be explainable?
+3. How similar exactly AI will eventually be to human intelligence? Will machines understand their own processes? Because humans aren't super reflective, and it's believed by many that humans make a decision, and then explain it later. Should machines do that too?
+4. What does explainability mean? We want non-inscrutable algorithms, but in literature people have been talking about different things: transparency, justification, demonstration, interpretation.
+5. Explainability: different for different types of algorithms?
+
+These last two issues are especially difficult.
 
 ### XAI - Complex Algorithms
 
+Some algorithms are highly explainable, or at least could be designed to be that way, but this does not seem to be true of all algorithms and is a major complication of the XAI objective.
+
 ### XAI or GAI
 
+Explainability as transparency?
+- problem: they use correlation, whereas we're more comfortable with causation (i.e, I know something for sure)
+
+Explainability as justification?
+- problem: giving the reasons in terms of the principles that could explain our true opinions. this won't help much. Deep Blue was trained on principles, but many AI don't have principles or learn them (AlphaGO)
+
+Explainability as Interpretation?
+- what kinds of concepts are nested in interpretability? Little agreement. Can humans interpret what's going on in an AI?
+
+Governable Artificial Intelligence (GAI)
+- we may never understand how algorithms come up with their conclusions. So we should govern or regulate the algorithms. Peter Norvig wrote this. He claims analyzing the output of the AI is better than understanding the system. Similar to Auditing, or Verification. Another stream of thought calls for Accountability.
+- What these concepts have in common is an attempt to manage AI rather than explain how it reaches its conclusions
+
 ### Further Reading
+
+Bornstein, Aaron. “Is Artificial Intelligence Permanently Inscrutable?” http://nautil.us/issue/40/learning/is-artificial-intelligence-permanently-inscrutable
+
+Gunning, David. “Explainable Artificial Intelligence.” https://www.darpa.mil/program/explainable-artificial-intelligence
+
+Weinberger, David. “Our Machines Now Have Knowledge We'll Never Understand.” https://www.wired.com/story/our-machines-now-have-knowledge-well-never-understand
 
 ## Lab
 
 ### Assignment
 
+blah
+
 ### Algorithms and Accountability
+
+they talk about the lab, this time I do IRAC first, not with the video
 
 ### IRAC Case Study
 
+Given a hypothetical case, they ask you to do the IRAC method. Here's my quickie:
+
+Issue: The algorithm is using race and gender to predict recidivism, and
+Rule: Race and gender are protected classes in the constitution, and
+Application: this jail is owned by the county so the protected classes apply, and therefore
+Conclusion: they cannot use race and gender in the inputs.
+
 ### IRAC Suggested Answers
+
+I got it right, but their answer has way more detail and information and is worth reading
 
 ### Predicting Recidivism without Using Protected Classes
 
+There are _SO MANY TYPOS_ in this one.
+
 ### Validation
 
+no access
+
 ### Module 04 Assessment
+
+no access
 
 # Final Evaluation
 
@@ -735,11 +858,16 @@ unavailable due to auditing
 
 ### Module 05 Assessment
 
+no access
+
 ## Wrap Up
 
 ### Wrap Up
+
+Little plug for their digital dignity company
 
 ## Post-Course Survey
 
 ### Post-course Survey
 
+meh
