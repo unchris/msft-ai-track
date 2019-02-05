@@ -287,7 +287,13 @@ I copied this verbatim from the P Values lab because even the guy's slides went 
 
 > So, to repeat, the *p-value states the probability of getting **your result** if the null is true*. It is essentially a statement of incompatibility between your data and the null. A small *p*-value (typically, less than 5% or "&lt; . 05") tells you that the data and null are highly incompatible. Since you did in fact observe the data, you conclude the null hypothesis is false. This is the only use for the *p*-value.
 
-In the lab about Confidence Intervals it needs access to a file I cloned outside of the docker container.
+_Note: In the lab about Confidence Intervals it needs access to a file I cloned outside of the docker container. I got lazy and instead of mounting the labs in docker I just `curl`ed them from Github like the first course did, e.g.,_
+
+```bash
+!curl https://raw.githubusercontent.com/MicrosoftLearning/Research-Methods-for-Data-Science-with-Python/master/Module2/datasets/attitude.csv -o attitude.csv
+```
+
+
 
 ### Lab Check
 
