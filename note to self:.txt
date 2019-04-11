@@ -1,0 +1,2 @@
+note to self:
+- imagine a programming language where you had to define the social quality of the data you're storing. e.g., instead of `int i = 0`, you have to put `sensitive int i = 0` to indicate that it should have a certain amount of encryption/masking in its implementation
